@@ -56,7 +56,7 @@ public class WebDriverManager {
                 }
                 tempDriver = new FirefoxDriver(firefoxOptions);
                 break;
-            default:;
+            default:
                 ChromeOptions chromeOptions = new ChromeOptions();
                 if(isHeadless){
                     //To execute in headless
