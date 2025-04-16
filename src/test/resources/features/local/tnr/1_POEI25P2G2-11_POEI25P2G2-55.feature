@@ -22,24 +22,24 @@ Feature: US10 - Gestion des coordonnées de l'utilisateur
 	@POEI25P2G2-60 @TNR
 	Scenario: US10 - Création d'addresse
 		When L'utilisateur va dans la page 'My Account'
-		And L'utilisateur clique sur 'Créer une addresse'
-		Then L'utilisateur est sur la page 'Création d'Addresse'
-		When L'utilisateur rentre les informations "prenom", "nom", "telephone", "addresse", "ville", "code_postal", "pays" et valide
+		And L'utilisateur clique sur 'Créer une adresse'
+		Then L'utilisateur est sur la page 'Création d'Adresse'
+		When L'utilisateur rentre les informations "prenom", "nom", "telephone", "adresse", "ville", "code_postal", "pays" et valide
 		Then L'utilisateur est sur la page 'My Account'
-		And L'adresse a été créée avec les informations "prenom", "nom", "telephone", "addresse", "ville", "code_postal", "pays"
+		And L'adresse a été créée avec les informations "prenom", "nom", "telephone", "adresse", "ville", "code_postal", "pays"
 		
 	@POEI25P2G2-59 @TNR
 	Scenario: US10 - Modification d'addresse
 		When L'utilisateur se rend sur la page 'My Account'
 		And L'utilisateur clique sur 'Modifier une Adresse'
-		Then L'utilisateur est sur la page 'Modification d'Addresse'
-		When L'utilisateur rentre les informations "prenom", "nom", "telephone", "addresse", "ville", "code_postal", "pays" et valide
+		Then L'utilisateur est sur la page 'Modification d'Adresse'
+		When L'utilisateur rentre les informations "prenom", "nom", "telephone", "adresse", "ville", "code_postal", "pays" et valide
 		Then L'utilisateur est sur la page 'My Account'
-		And L'adresse a été modifiée avec les informations "prenom", "nom", "telephone", "addresse", "ville", "code_postal", "pays"
+		And L'adresse a été modifiée avec les informations "prenom", "nom", "telephone", "adresse", "ville", "code_postal", "pays"
 		
 	@POEI25P2G2-53 @TNR
 	Scenario: US10 - Vérification présence de 'My Address' dans 'My Account'
 		When L'utilisateur va dans la page 'My Account'
 		Then Un espace 'My Address' est affiché sur la page
-		And Les informations "prenom", "nom", "telephone", "addresse" sont présents
+		And Les informations "prenom", "nom", "telephone", "adresse" sont présents
 		
