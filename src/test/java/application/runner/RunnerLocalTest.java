@@ -7,7 +7,7 @@ import static io.cucumber.junit.platform.engine.Constants.*;
 
 @Suite
 @IncludeEngines("cucumber")
-@SelectClasspathResource("features/local")
+@SelectClasspathResource("features/local/tnr")
 @ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "application")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty, html:target/cucumber-reports.html, json:target/cucumber.json")
 public class RunnerLocalTest {
