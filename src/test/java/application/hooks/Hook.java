@@ -3,6 +3,9 @@ package application.hooks;
 import application.utils.WebDriverManager;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 public class Hook {
 
@@ -28,7 +31,11 @@ public class Hook {
      * The method tearing down the driver, executed after each test.
      */
     @After
-    public void tearDown() {
+    public void tearDown(Scenario scenario) {
+        if (scenario.isFailed()) {
+            byte[] screenshot = ((TakesScreenshot) this.webDriverManager.getWebDriver()).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", scenario.getName());
+        }
         this.webDriverManager.quit();
     }
 
