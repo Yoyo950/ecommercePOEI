@@ -27,7 +27,7 @@ public class WebDriverManager {
     public void createDriver() {
         driver = this.getDriverConfig();
         driver.manage().window().maximize();
-        driver.get("http://www.automationpractice.pl/");
+        driver.get(ConfigReader.getProperty("url")); // Lecture dynamique de l'URL
     }
 
     /**
