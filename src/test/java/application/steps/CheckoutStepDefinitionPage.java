@@ -1,7 +1,6 @@
 package application.steps;
 
-import application.pages.CartPage;
-import application.pages.CheckoutPage;
+import application.pages.site.CheckoutPage;
 import application.utils.WebDriverManager;
 
 public class CheckoutStepDefinitionPage {

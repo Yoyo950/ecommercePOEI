@@ -1,7 +1,6 @@
 package application.steps;
 
-import application.pages.CartPage;
-import application.pages.HomePage;
+import application.pages.site.HomePage;
 import application.utils.WebDriverManager;
 
 public class HomeStepDefinitionPage {

@@ -1,7 +1,6 @@
 package application.steps;
 
-import application.pages.CartPage;
-import application.pages.FacebookPage;
+import application.pages.external_pages.FacebookPage;
 import application.utils.WebDriverManager;
 
 public class FacebookStepDefinitionPage {

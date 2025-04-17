@@ -1,6 +1,6 @@
 package application.steps;
 
-import application.pages.AuthentificationPage;
+import application.pages.site.AuthentificationPage;
 import application.utils.WebDriverManager;
 
 public class AuthentificationStepDefinitionPage {

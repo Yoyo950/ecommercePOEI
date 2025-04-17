@@ -1,7 +1,6 @@
 package application.steps;
 
-import application.pages.HomePage;
-import application.pages.PrestashopPage;
+import application.pages.external_pages.PrestashopPage;
 import application.utils.WebDriverManager;
 
 public class PrestashopStepDefinitionPage {
