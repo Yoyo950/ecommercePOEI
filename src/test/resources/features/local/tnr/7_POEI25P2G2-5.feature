@@ -16,7 +16,7 @@ Feature: US08 - Recherche des articles sur le site
 	Scenario Outline: US08 - Recherche classique avec une liste de résultats
 		When L'utilisateur entre "<input>" dans la barre de recherche
 		And Clique sur la loupe
-		Then L'utilisateur est sur la page 'Search'
+		Then L'utilisateur est sur la page search
 		And L'article "<article>" est présent dans la liste de résultats
 		
 		Examples:
@@ -28,8 +28,8 @@ Feature: US08 - Recherche des articles sur le site
 	Scenario Outline: US08 - Proposition d'articles lors de la recherche
 		When L'utilisateur entre "<input>" dans la barre de recherche
 		Then L'article "<article>" doit être proposé
-		When L'utilisateur clique sur l'article "<article>" proposé
-		Then L'utilisateur est sur la page de l'article "<article>"
+		When L'utilisateur clique sur un article "<article>" proposé
+		Then L'utilisateur est sur la page article de "<article>"
 		
 		Examples:
 		  | input | article |
@@ -42,8 +42,10 @@ Feature: US08 - Recherche des articles sur le site
 		Then Le champ de recherche et la loupe doivent être présents
 		
 		Examples:
-		  | page      |
-		  | homepage  |
-		  | articles  |
-		  | recherche |
+		  | page             |
+		  | homepage         |
+		  | article          |
+		  | search           |
+		  | contact          |
+		  | authentification |
 		

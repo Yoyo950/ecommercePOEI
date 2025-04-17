@@ -19,16 +19,11 @@ Feature: US01 - Accès à la page d'accueil
 	#
 	#RG3 : Des publicités à la une redirige vers le site partenaire prestashop
 
-	Background:
-		#@POEI25P2G2-73
-		Given l'utilisateur accède à l'URL de l'application
-		Then la page d'accueil s'affiche
-		And la barre de navigation principale est visible
-
 	@POEI25P2G2-29 @TNR
 	Scenario Outline: US01 - Accès à une catégorie d'articles via le menu
-		When il clique sur l'onglet "<catégorie>"
-		Then la page des articles de la catégorie "<catégorie>" s'affiche
+		Given L'utilisateur est sur la page accueil
+		When Il clique sur l'onglet "<catégorie>"
+		Then La page des articles de la catégorie "<catégorie>" s'affiche
 		
 		Examples:
 		  | catégorie |
@@ -38,24 +33,20 @@ Feature: US01 - Accès à la page d'accueil
 		
 	@POEI25P2G2-28 @TNR
 	Scenario: US01 - Accès à la page d'authentification via le menu
-		When il clique sur le lien "Sign in"
-		Then la page d'authentification s'affiche
+		Given L'utilisateur est sur la page accueil
+		When L'utilisateur se rend sur la page authentification
+		Then L'utilisateur est sur la page authentification
 		
 	@POEI25P2G2-27 @TNR
 	Scenario: US01 - Accès à la page de contact via le menu
-		Given l'utilisateur est sur la page d'accueil
-		When il clique sur le lien "Contact us"
-		Then la page de contact s'affiche
-		
-	@POEI25P2G2-25 @TNR
-	Scenario: US01 - Présence des publicités à la une et redirection vers site prestataire
-		Then des publicités à la une sont visibles dans la section principale
-		When il clique sur une publicité à la une
-		Then il est redirigé vers le site partenaire PrestaShop
+		Given L'utilisateur est sur la page accueil
+		When Il clique sur le lien Contact Us
+		Then L'utilisateur est sur la page contact
 		
 	@POEI25P2G2-23 @TNR
 	Scenario Outline: US01 - Les éléments de navigation sont visibles sur la page d'accueil
-		Then l'élément "<élément>" est visible dans la barre de navigation
+		Given L'utilisateur est sur la page accueil
+		Then L'élément "<élément>" est visible 
 		
 		Examples:
 		  | élément      |

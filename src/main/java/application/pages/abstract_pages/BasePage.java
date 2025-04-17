@@ -4,7 +4,7 @@ import application.utils.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public class BasePage {
+public abstract class BasePage {
 
     protected final WebDriver driver;
 

@@ -14,32 +14,32 @@ Feature: US10 - Gestion des coordonnées de l'utilisateur
 
 	Background:
 		#@POEI25P2G2-55
-		Given l'utilisateur est sur la page d'authentification
-		When il entre son identifiant "utilisateur@test.com" et son mot de passe "correct123"
-		And il clique sur le bouton "Sign in"
+		Given L'utilisateur se rend sur la page authentification
+		When Il entre ses identifiants
+		And Il clique sur le bouton Sign In
 		Then l'utilisateur est connecté
 
 	@POEI25P2G2-60 @TNR
-	Scenario: US10 - Création d'addresse
-		When L'utilisateur va dans la page 'My Account'
-		And L'utilisateur clique sur 'Créer une adresse'
-		Then L'utilisateur est sur la page 'Création d'Adresse'
+	Scenario: US10 - Création d'adresse
+		When L'utilisateur se rend sur la page my account
+		And L'utilisateur clique sur créer une adresse
+		Then L'utilisateur est sur la page création adresse
 		When L'utilisateur rentre les informations "prenom", "nom", "telephone", "adresse", "ville", "code_postal", "pays" et valide
-		Then L'utilisateur est sur la page 'My Account'
+		Then L'utilisateur est sur la page my account
 		And L'adresse a été créée avec les informations "prenom", "nom", "telephone", "adresse", "ville", "code_postal", "pays"
 		
 	@POEI25P2G2-59 @TNR
-	Scenario: US10 - Modification d'addresse
-		When L'utilisateur se rend sur la page 'My Account'
-		And L'utilisateur clique sur 'Modifier une Adresse'
-		Then L'utilisateur est sur la page 'Modification d'Adresse'
-		When L'utilisateur rentre les informations "prenom", "nom", "telephone", "adresse", "ville", "code_postal", "pays" et valide
-		Then L'utilisateur est sur la page 'My Account'
-		And L'adresse a été modifiée avec les informations "prenom", "nom", "telephone", "adresse", "ville", "code_postal", "pays"
+	Scenario: US10 - Modification d'adresse
+		When L'utilisateur est sur la page my account
+		And L'utilisateur clique sur modifier une adresse
+		Then L'utilisateur clique sur modifier une adresse
+		When L'utilisateur rentre les informations "<prenom>", "<nom>", "<telephone>", "<adresse>", "<ville>", "<code_postal>", "<pays>" et valide
+		Then L'utilisateur est sur la page my account
+		And L'adresse a été modifiée avec les informations "<prenom>", "<nom>", "<telephone>", "<adresse>", "<ville>", "<code_postal>", "<pays>"
 		
 	@POEI25P2G2-53 @TNR
 	Scenario: US10 - Vérification présence de 'My Address' dans 'My Account'
-		When L'utilisateur va dans la page 'My Account'
-		Then Un espace 'My Address' est affiché sur la page
+		When L'utilisateur se rend sur la page my account
+		Then Un espace my address est affiché sur la page
 		And Les informations "prenom", "nom", "telephone", "adresse" sont présents
 		

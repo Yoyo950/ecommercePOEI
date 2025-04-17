@@ -58,15 +58,15 @@ Feature: US04 - Gestion du compte client authentification
 	#RG4 : En cas de connexion avec un mot de passe erroné, un message "Invalid password" s'affiche
 	@POEI25P2G2-49 @TNR
 	Scenario: US04 - Connexion avec des identifiants valides
-		Given l'utilisateur est sur la page d'authentification
-		When il entre son identifiant "utilisateur@test.com" et son mot de passe "correct123"
-		And il clique sur le bouton "Sign in"
-		Then la page "My Account" s'affiche
-		And son nom et prénom apparaissent dans la barre de menu
+		Given L'utilisateur se rend sur la page authentification
+		When Il entre ses identifiants
+		And Il clique sur le bouton Sign In
+		Then L'utilisateur est sur la page my account
+		And Son nom et prénom apparaissent dans la barre de menu
 		
 	@POEI25P2G2-47 @TNR
 	Scenario: US04 - Accès à la page d'authentification depuis la page d’accueil
-		Given l'utilisateur est sur la page d'accueil
-		When il clique sur le lien "Sign in"
-		Then la page d'authentification s'affiche
+		Given L'utilisateur est sur la page d'accueil
+		When Il clique sur le bouton Sign In
+		Then L'utilisateur est sur la page authentification
 		

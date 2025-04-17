@@ -20,20 +20,21 @@ Feature: US05 -  Ré-initialiser mon mot de passe
 
 	@POEI25P2G2-58 @TNR
 	Scenario: US05 -  Génération d'un nouveau mot de passe via le lien reçu par email
-		Given l'utilisateur a reçu un email de réinitialisation de mot de passe
-		When il clique sur le lien contenu dans l’email
-		Then un nouveau mot de passe lui est envoyé par email
+		Given L'utilisateur a reçu un email de réinitialisation de mot de passe
+		When Il clique sur le lien contenu dans l’email
+		Then Un nouveau mot de passe lui est envoyé par email
 		
 	@POEI25P2G2-57 @TNR
 	Scenario: US05 -  Demande de réinitialisation de mot de passe
-		Given l'utilisateur est sur la page de réinitialisation du mot de passe
-		When il saisit son adresse email dans le champ prévu
-		And il clique sur le bouton "Retrieve Password"
-		Then une demande de réinitialisation est envoyée à l'adresse saisie
+		Given L'utilisateur se rend sur la page authentification
+		And L'utilisateur se rend sur la page réinitialisation du mot de passe
+		When Il saisit son adresse email dans le champ prévu
+		And Il clique sur le bouton retrieve password
+		Then Une demande de réinitialisation est envoyée à l'adresse saisie
 		
 	@POEI25P2G2-52 @TNR
 	Scenario: US05 -  Accès à la page de réinitialisation de mot de passe
-		Given l'utilisateur est sur la page d'authentification
-		When il clique sur le lien "Forgot your password?"
-		Then la page de réinitialisation du mot de passe s'affiche
+		Given L'utilisateur se rend sur la page authentification
+		When L'utilisateur se rend sur la page réinitialisation du mot de passe
+		Then La page de réinitialisation du mot de passe s'affiche
 		

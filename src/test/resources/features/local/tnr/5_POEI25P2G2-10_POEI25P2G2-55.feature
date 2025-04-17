@@ -22,33 +22,33 @@ Feature: US03 - Gestion du compte client : commnades et informations personnelle
 
 	Background:
 		#@POEI25P2G2-55
-		Given l'utilisateur est sur la page d'authentification
-		When il entre son identifiant "utilisateur@test.com" et son mot de passe "correct123"
-		And il clique sur le bouton "Sign in"
+		Given L'utilisateur se rend sur la page authentification
+		When Il entre ses identifiants
+		And Il clique sur le bouton Sign In
 		Then l'utilisateur est connecté
 
 	@POEI25P2G2-46 @TNR
 	Scenario: US03 - Retour à la page d'accueil depuis l'espace "My Account"
-		When l'utilisateur est sur la page "My Account"
-		And il clique sur le bouton "Home"
-		Then il est redirigé vers la page d'accueil
+		When L'utilisateur se rend sur la page my account
+		And L'utilisateur se rend sur la page accueil
+		Then L'utilisateur est dans la page d'acceuil
 		
 	@POEI25P2G2-45 @TNR
 	Scenario: US03 - Redirection vers la page de saisie d’adresse
-		When l'utilisateur est sur la page "My Account"
-		And il clique sur le bouton "Add my first address"
-		Then la page de saisie d’adresse s’affiche
+		When L'utilisateur se rend sur la page my account
+		And Il clique sur le bouton add my first address
+		Then L'utilisateur est sur la page création adresse
 		
 	@POEI25P2G2-44 @TNR
 	Scenario: US03 - Présence du bouton 'Add my first Address' pour ajouter une première adresse
-		When il accède à la page "My Account"
+		When L'utilisateur se rend sur la page my account
 		And Il n'a enregistré aucune adresse
-		Then le bouton "Add my first address" est affiché
+		Then Le bouton add my first address est affiché
 		
 	@POEI25P2G2-42 @TNR
 	Scenario Outline: US03 - Présence des différentes sections sur 'My Account'
-		When il accède à la page "My Account"
-		Then la section "<section>" est visible
+		When L'utilisateur se rend sur la page my account
+		Then La section "<section>" est visible
 		
 		Examples:
 		  | section                 |

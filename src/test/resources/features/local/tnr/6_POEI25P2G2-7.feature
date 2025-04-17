@@ -32,40 +32,42 @@ Feature: US02 - Création d'un compte client
 
 	@POEI25P2G2-40 @TNR
 	Scenario Outline: US02 - Création de compte : des données invalides
-		Given l'utilisateur est sur la page "Create an account"
-		When il remplit le formulaire avec :
-		    | genre         | <genre>         |
-		    | prénom        | <prénom>        |
-		    | nom           | <nom>           |
-		    | email         | <email>         |
-		    | motDePasse    | <motDePasse>    |
-		    | dateNaissance | <dateNaissance> |
-		    | newsletter    | <newsletter>    |
-		And il clique sur le bouton "REGISTER"
-		Then le message d'erreur "<message>" s'affiche
+		Given L'utilisateur se rend sur la page authentification
+		When Il entre l'adresse mail "<email>" sur le champ de création
+		And Il clique sur le bouton create an account
+		Then L'utilisateur est sur la page create an account
+		When Il remplit le formulaire avec "<genre>", "<prénom>", "<nom>", "<email>", "<motDePasse>", "<dateNaissance>", "<newsletter>"
+		And Il clique sur le bouton REGISTER
+		Then Le message d'erreur "<message>" s'affiche
 		
 		Examples:
-		  | genre | prénom | nom     | email         | motDePasse | dateNaissance | newsletter | message                         |
-		  |       | fatima | fatima  | test@mail.com | abcdef     | 01/01/1990    | coché      | Le champ genre est obligatoire |
-		  | Mme   |        | fatima  | test@mail.com | abcdef     |               | non coché  | Le prénom est obligatoire      |
-		  | Mme   | fatima |         | test@mail.com | abcdef     |               | coché      | Le nom est obligatoire         |
-		  | Mme   | fatima | fatima  | test@mail     | abcdef     |               | non coché  | Email is invalid               |
-		  | Mme   | fatima | fatima  | test@mail.com | 123        | 05/07/1985    | coché      | Password is invalid            |
+				  | genre | prénom | nom     | email         | motDePasse | dateNaissance | newsletter | message                        |
+				  |       | fatima | fatima  | test@mail.com | abcdef     | 01/01/1990    | coché      | Le champ genre est obligatoire |
+				  | Mme   |        | fatima  | test@mail.com | abcdef     |               | non coché  | Le prénom est obligatoire      |
+				  | Mme   | fatima |         | test@mail.com | abcdef     |               | coché      | Le nom est obligatoire         |
+				  | Mme   | fatima | fatima  | test@mail.com | 123        | 05/07/1985    | coché      | Password is invalid            |
 		
 	@POEI25P2G2-39 @TNR
-	Scenario: US02 - Création de compte avec informations valides
-		Given l'utilisateur est sur la page "Create an account"
-		When il renseigne toutes les informations valides du formulaire "Register"
-		And il clique sur le bouton "REGISTER"
-		Then la page "My account" s'affiche
-		And le message "Your account has been created." est visible
+	Scenario Outline: US02 - Création de compte avec informations valides
+		Given L'utilisateur se rend sur la page authentification 
+		When Il entre l'adresse mail "<email>" sur le champ de création
+		And Il clique sur le bouton create an account
+		Then L'utilisateur est sur la page create an account
+		When Il remplit le formulaire avec "<genre>", "<prénom>", "<nom>", "<email>", "<motDePasse>", "<dateNaissance>", "<newsletter>"
+		And Il clique sur le bouton REGISTER
+		Then L'utilisateur est sur la page my account
+		And Le message "Your account has been created." est visible
+		
+		Examples:
+					| genre | prénom | nom     | email         | motDePasse | dateNaissance | newsletter |
+					| Mme   | fatima | fatima  | test@mail.com | abcdef     | 01/01/1990    | coché      |
 		
 	@POEI25P2G2-38 @TNR
 	Scenario Outline: US02 - Saisie d'un email invalide sur la page d'authentification
-		Given l'utilisateur est sur la page d'authentification
-		When il saisit "<email>" dans le champ "Email address"
-		And il clique sur le bouton "Create an account"
-		Then le message "Invalid email address" s'affiche
+		Given L'utilisateur se rend sur la page authentification
+		When Il entre l'adresse mail "<email>" sur le champ de création
+		And Il clique sur le bouton create an account
+		Then Le message "Invalid email address" s'affiche
 		
 		Examples:
 		  | email         | 
@@ -75,8 +77,8 @@ Feature: US02 - Création d'un compte client
 		
 	@POEI25P2G2-37 @TNR
 	Scenario: US02 - Accès à la page de création de compte
-		Given l'utilisateur est sur la page d'authentification
-		When il saisit une adresse email valide dans le champ "Email address"
-		And il clique sur le bouton "Create an account"
-		Then la page "Create an account" s'affiche
+		Given L'utilisateur se rend sur la page authentification
+		When Il entre l'adresse mail "adressevalide@validedefou.com" sur le champ de création
+		And Il clique sur le bouton create an account
+		Then L'utilisateur est sur la page create an account
 		

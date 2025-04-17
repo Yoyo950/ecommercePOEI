@@ -27,7 +27,7 @@ public class WebDriverManager {
     public void createDriver() {
         driver = this.getDriverConfig();
         driver.manage().window().maximize();
-        //driver.get("https://www.saucedemo.com/");
+        driver.get("http://www.automationpractice.pl/");
     }
 
     /**

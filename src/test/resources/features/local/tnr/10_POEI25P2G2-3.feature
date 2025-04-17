@@ -14,11 +14,12 @@ Feature: US07 - Affichage du Logo
 		When L'utilisateur se rend sur la page "<page>"
 		Then Le logo 'Your Logo What a new experience' est présent
 		When L'utilisateur clique sur le logo
-		Then L'utilisateur est sur la page 'Accueil'
+		Then L'utilisateur est sur la page accueil
 		
-		Examples:
-		  | page      |
-		  | homepage  |
-		  | articles  |
-		  | recherche |
+		Examples: 
+		  | page              |
+		  | authentification  |
+		  | article           |
+		  | search            |
+		  | contact           |
 		

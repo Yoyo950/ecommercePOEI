@@ -13,22 +13,24 @@ Feature: US06 - Déconnexion de l'utilisateur
 
 	Background:
 		#@POEI25P2G2-55
-		Given l'utilisateur est sur la page d'authentification
-		When il entre son identifiant "utilisateur@test.com" et son mot de passe "correct123"
-		And il clique sur le bouton "Sign in"
+		Given L'utilisateur se rend sur la page authentification
+		When Il entre ses identifiants
+		And Il clique sur le bouton Sign In
 		Then l'utilisateur est connecté
 
 	@POEI25P2G2-17 @TNR
 	Scenario Outline: US06 - Test Déconnexion Utilisateur sur plusieurs pages
 		When L'utilisateur se rend sur la page "<page>"
-		Then Le bouton 'Sign Out' avec le lien correspondant doit être présent
-		When L'utilisateur clique sur 'Sign Out'
-		Then L'utilisateur est sur la page d'authentification
-		And Le bouton 'Sign In' a remplacé le bouton 'Sign Out'
+		Then Le bouton Sign Out avec le lien correspondant doit être présent
+		When L'utilisateur clique sur Sign Out
+		Then L'utilisateur est déconnecté
+		And L'utilisateur est sur la page authentification
 		
 		Examples:
 		  | page      |
 		  | homepage  |
-		  | articles  |
-		  | recherche |
+		  | article   |
+		  | search    |
+		  | contact   |
+		  | myaccount |
 		

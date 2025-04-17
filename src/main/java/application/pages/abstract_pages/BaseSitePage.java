@@ -4,7 +4,7 @@ import application.utils.WebDriverManager;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class BaseSitePage extends BasePage {
+public abstract class BaseSitePage extends BasePage {
 
     @FindBy(id = "header_logo")
     private WebElement logo;
