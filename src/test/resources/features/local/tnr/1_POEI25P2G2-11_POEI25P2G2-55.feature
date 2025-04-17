@@ -31,9 +31,10 @@ Feature: US10 - Gestion des coordonnées de l'utilisateur
 	@POEI25P2G2-59 @TNR
 	Scenario: US10 - Modification d'adresse
 		When L'utilisateur est sur la page my account
-		And L'utilisateur clique sur modifier une adresse
-		Then L'utilisateur clique sur modifier une adresse
+		And L'utilisateur clique sur My Adresses
+		And L'utilisateur clique sur Update
 		When L'utilisateur rentre les informations "<prenom>", "<nom>", "<telephone>", "<adresse>", "<ville>", "<code_postal>", "<pays>" et valide
+		And L'utilisateur clique sur le bouton Save
 		Then L'utilisateur est sur la page my account
 		And L'adresse a été modifiée avec les informations "<prenom>", "<nom>", "<telephone>", "<adresse>", "<ville>", "<code_postal>", "<pays>"
 		
