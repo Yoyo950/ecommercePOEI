@@ -1,4 +1,4 @@
-package application.steps;
+package application.steps.site;
 
 import application.pages.site.CheckoutPage;
 import application.utils.WebDriverManager;

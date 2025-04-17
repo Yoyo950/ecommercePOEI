@@ -1,4 +1,4 @@
-package application.steps;
+package application.steps.site;
 
 import application.pages.site.AuthentificationPage;
 import application.utils.WebDriverManager;

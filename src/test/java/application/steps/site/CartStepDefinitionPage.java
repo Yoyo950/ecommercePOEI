@@ -1,4 +1,4 @@
-package application.steps;
+package application.steps.site;
 
 import application.pages.site.CartPage;
 import application.utils.WebDriverManager;

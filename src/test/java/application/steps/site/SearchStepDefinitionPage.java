@@ -1,4 +1,4 @@
-package application.steps;
+package application.steps.site;
 
 import application.pages.site.SearchPage;
 import application.utils.WebDriverManager;

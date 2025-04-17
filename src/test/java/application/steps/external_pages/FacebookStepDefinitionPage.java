@@ -1,4 +1,4 @@
-package application.steps;
+package application.steps.external_pages;
 
 import application.pages.external_pages.FacebookPage;
 import application.utils.WebDriverManager;
