@@ -66,9 +66,15 @@ public abstract class BaseSitePage extends BasePage {
     @FindBy(xpath = "//div[@class = 'ac_results']/ul")
     private WebElement list_results;
 
+    private final String windowHandle;
 
     public BaseSitePage(WebDriverManager webDriverManager) {
         super(webDriverManager);
+        windowHandle = webDriverManager.getWebDriver().getWindowHandle();
+    }
+
+    public String getWindowHandle() {
+        return windowHandle;
     }
 
     /**
