@@ -6,6 +6,7 @@ import application.utils.WebDriverManager;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -39,6 +40,13 @@ public class AuthentificationPage extends BaseSitePage {
 
     @FindBy(id = "email_create")
     private WebElement emailCreateInput;
+
+    @FindBy(id = "SubmitCreate")
+    private WebElement createAccountButton;
+
+    @FindBy(id = "create_account_error")
+    private WebElement accountCreationError;
+
 
     /**
      * Constructeur de la page Authentification.
@@ -104,4 +112,28 @@ public class AuthentificationPage extends BaseSitePage {
         emailCreateInput.clear();
         emailCreateInput.sendKeys(email);
     }
+
+    /**
+     * Clique sur le bouton "Create an account" pour démarrer la création de compte.
+     */
+    public void clickCreateAccountButton() {
+        int timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+        wait.until(ExpectedConditions.elementToBeClickable(createAccountButton));
+        createAccountButton.click();
+    }
+
+    /**
+     * Récupère le message d'erreur affiché lors de la création de compte.
+     *
+     * @return le texte du message d'erreur.
+     */
+    public String getAccountCreationErrorMessage() {
+        int timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+        wait.until(ExpectedConditions.visibilityOf(accountCreationError));
+        return accountCreationError.getText().trim();
+    }
+
+
 }

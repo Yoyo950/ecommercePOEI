@@ -5,6 +5,9 @@ import application.utils.ConfigReader;
 import application.utils.WebDriverManager;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.And;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -56,6 +59,15 @@ public class AuthentificationStepDefinitionPage {
     public void utilisateurSeRendSurLaPageReinitialisationMotDePasse() {
         authentificationPage.clickForgotPassword();
     }
+    /**
+     * Génère un email unique basé sur le timestamp actuel.
+     *
+     * @return Un email unique
+     */
+    private String generateUniqueEmail() {
+        long timestamp = System.currentTimeMillis();
+        return "testfwy" + timestamp + "@validedefou.com";
+    }
 
     /**
      * Remplit le champ Email de création de compte avec l'email donné.
@@ -64,10 +76,31 @@ public class AuthentificationStepDefinitionPage {
      */
     @When("Il entre l'adresse mail {string} sur le champ de création")
     public void ilEntreAdresseMailSurLeChampDeCreation(String email) {
+        if (email.equalsIgnoreCase("random")) {
+            email = generateUniqueEmail();
+        }
         authentificationPage.enterEmailForAccountCreation(email);
     }
 
 
+    /**
+     * Action de cliquer sur le bouton "Create an account".
+     */
+    @And("Il clique sur le bouton create an account")
+    public void ilCliqueSurLeBoutonCreateAnAccount() {
+        authentificationPage.clickCreateAccountButton();
+    }
+
+    /**
+     * Vérifie que le message d'erreur attendu est affiché.
+     *
+     * @param expectedMessage Le texte attendu (ex : "Invalid email address.")
+     */
+    @Then("Le message {string} s'affiche")
+    public void leMessageSaffiche(String expectedMessage) {
+        String actualMessage = authentificationPage.getAccountCreationErrorMessage();
+        assertEquals(expectedMessage, actualMessage, "Le message affiché ne correspond pas.");
+    }
 
 
 }
