@@ -32,7 +32,6 @@ public class WebDriverManager {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.get(ConfigReader.getProperty("url")); // Lecture dynamique de l'URL
     }
-    }
 
     /**
      * Method used to instantiate the WebDriver,
