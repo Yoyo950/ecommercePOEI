@@ -41,12 +41,29 @@ public class BaseSiteStepDefinitionPage {
 
     @Then("L'utilisateur est déconnecté")
     public void lUtilisateurEstDeconnecte() {
-        Assertions.assertFalse(baseSitePage.userIsConnected());
+        Assertions.assertTrue(baseSitePage.userIsNotConnected());
     }
 
     @When("L'utilisateur se rend sur la page {string}")
     public void lUtilisateurSeRendSurLaPage(String page) {
-        //TODO : Do That
+        switch (page) {
+            case "homepage":
+                baseSitePage.clickOnLogo();
+                break;
+            case "article":
+                baseSitePage.enterInSearchBar("dresses");
+                baseSitePage.clickOnArticle("Evening Dresses");
+                break;
+            case "contact":
+                baseSitePage.clickOnContactUs();
+                break;
+            case "myaccount":
+                baseSitePage.clickOnAccount();
+                break;
+            case "authentification":
+                baseSitePage.clickOnSignIn();
+                break;
+        }
     }
 
     @Then("Le bouton Sign Out avec le lien correspondant doit être présent")
@@ -55,7 +72,7 @@ public class BaseSiteStepDefinitionPage {
     }
 
     @Then("Le logo {string} est présent")
-    public void leLogoYourLogoWhatANewExperienceEstPrésent() {
+    public void leLogoYourLogoWhatANewExperienceEstPrésent(String arg0) {
         Assertions.assertTrue(baseSitePage.logoIsDisplayed());
     }
 
@@ -117,7 +134,6 @@ public class BaseSiteStepDefinitionPage {
     }
 
     @Then("Le champ de recherche et la loupe doivent être présents")
-    @Given("Le champ de recherche et la loupe doivent être présents")
     public void leChampDeRechercheEtLaLoupeDoiventEtrePresents() {
         Assertions.assertTrue(baseSitePage.searchBarAndHandLensIsDisplayed());
     }

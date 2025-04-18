@@ -66,9 +66,15 @@ public abstract class BaseSitePage extends BasePage {
     @FindBy(xpath = "//div[@class = 'ac_results']/ul")
     private WebElement list_results;
 
+    private final String windowHandle;
 
     public BaseSitePage(WebDriverManager webDriverManager) {
         super(webDriverManager);
+        windowHandle = webDriverManager.getWebDriver().getWindowHandle();
+    }
+
+    public String getWindowHandle() {
+        return windowHandle;
     }
 
     /**
@@ -154,6 +160,14 @@ public abstract class BaseSitePage extends BasePage {
      */
     public boolean userIsConnected() {
         return sign_out.isDisplayed();
+    }
+
+    /**
+     * Permet de savoir si l'utilisateur n'est pas connecté
+     * @return true si non connecté, false sinon
+     */
+    public boolean userIsNotConnected() {
+        return sign_in.isDisplayed();
     }
 
     /**

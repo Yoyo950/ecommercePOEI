@@ -8,6 +8,8 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
+import java.time.Duration;
+
 /**
  * Class used to manage the WebDriver
  * Instantiate a WebDriver corresponding to parameters in config
@@ -27,7 +29,9 @@ public class WebDriverManager {
     public void createDriver() {
         driver = this.getDriverConfig();
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.get(ConfigReader.getProperty("url")); // Lecture dynamique de l'URL
+    }
     }
 
     /**
