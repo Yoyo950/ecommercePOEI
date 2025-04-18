@@ -63,8 +63,6 @@ public class BaseSiteStepDefinitionPage {
             case "authentification":
                 baseSitePage.clickOnSignIn();
                 break;
-
-
         }
     }
 
