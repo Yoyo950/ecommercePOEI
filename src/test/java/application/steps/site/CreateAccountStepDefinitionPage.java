@@ -30,7 +30,7 @@ public class CreateAccountStepDefinitionPage {
     }
 
     @And("Il clique sur le bouton REGISTER")
-    public void ilCliqueSurLeBoutonRegister() {
+    public void ilCliqueSurLeBoutonRegister() throws InterruptedException {
         createAccountPage.clickRegisterButton();
     }
 
@@ -51,4 +51,8 @@ public class CreateAccountStepDefinitionPage {
         assertTrue(createAccountPage.estSurPageCreateAccount(), "L'utilisateur n'est pas sur la page Create an Account !");
     }
 
+    @When("Il remplit le formulaire avec des données pour l'email temporaire")
+    public void ilRemplitLeFormulaireAvecDesDonneesPourLEmailTemporaire() {
+        createAccountPage.remplirFormulaireCreationCompte("Mme", "Test", "Jean", "azerty", "14/07/1989", "non coché");
+    }
 }

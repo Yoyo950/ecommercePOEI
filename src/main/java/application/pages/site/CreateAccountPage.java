@@ -20,7 +20,7 @@ public class CreateAccountPage extends BaseSitePage {
     /**
      * Identifiants des éléments de la page de création de compte.
      */
-    @FindBy(css = "h1.page-heading")
+    @FindBy(xpath = "//div[@id = 'noSlide']/h1")
     private WebElement pageHeading;
 
     @FindBy(id = "id_gender1")
@@ -88,7 +88,7 @@ public class CreateAccountPage extends BaseSitePage {
         if (!dateNaissance.isEmpty()) {
             String[] parts = dateNaissance.split("/");
             new Select(dayOfBirthSelect).selectByValue(parts[0]);
-            new Select(monthOfBirthSelect).selectByValue(parts[1]);
+            new Select(monthOfBirthSelect).selectByValue(String.valueOf(Integer.parseInt(parts[1])));
             new Select(yearOfBirthSelect).selectByValue(parts[2]);
         }
 
@@ -102,11 +102,9 @@ public class CreateAccountPage extends BaseSitePage {
     /**
      * Clique sur le bouton "Register" pour finaliser la création du compte.
      */
-    public void clickRegisterButton() {
-        int timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-        wait.until(ExpectedConditions.elementToBeClickable(registerButton));
+    public void clickRegisterButton() throws InterruptedException {
         registerButton.click();
+        Thread.sleep(2000);
     }
 
     /**

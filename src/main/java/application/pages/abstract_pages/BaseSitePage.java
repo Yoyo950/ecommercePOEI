@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -66,15 +67,14 @@ public abstract class BaseSitePage extends BasePage {
     @FindBy(xpath = "//div[@class = 'ac_results']/ul")
     private WebElement list_results;
 
-    private final String windowHandle;
 
     public BaseSitePage(WebDriverManager webDriverManager) {
         super(webDriverManager);
-        windowHandle = webDriverManager.getWebDriver().getWindowHandle();
     }
 
-    public String getWindowHandle() {
-        return windowHandle;
+    public void switchToWindowSite() {
+        List<String> list = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(list.get(0));
     }
 
     /**

@@ -18,11 +18,20 @@ Feature: US05 -  Ré-initialiser mon mot de passe
 	#
 	#RG2 : Le mail contient un lien de réinitialisation permettant l'envoi d'un mail avec un nouveau mot de passe
 
-	@POEI25P2G2-58 @TNR
-	Scenario: US05 -  Génération d'un nouveau mot de passe via le lien reçu par email
-		Given L'utilisateur a reçu un email de réinitialisation de mot de passe
-		When Il clique sur le lien contenu dans l’email
-		Then Un nouveau mot de passe lui est envoyé par email
+	Background:
+		#@POEI25P2G2-90
+		Given L'utilisateur crée une adresse mail temporaire
+		And L'utilisateur retourne sur le site
+		When L'utilisateur se rend sur la page authentification
+		And Il entre une adresse mail temporaire sur le champ de création
+		And Il clique sur le bouton create an account
+		Then L'utilisateur est sur la page create an account
+		When Il remplit le formulaire avec des données pour l'email temporaire
+		And Il clique sur le bouton REGISTER
+		Then L'utilisateur est sur la page my account
+		And Le message Your account has been created est visible
+		When L'utilisateur clique sur Sign Out
+		Then L'utilisateur est déconnecté
 		
 	@POEI25P2G2-57 @TNR
 	Scenario: US05 -  Demande de réinitialisation de mot de passe
@@ -31,6 +40,8 @@ Feature: US05 -  Ré-initialiser mon mot de passe
 		When Il saisit son adresse email dans le champ prévu
 		And Il clique sur le bouton retrieve password
 		Then Une demande de réinitialisation est envoyée à l'adresse saisie
+		When L'utilisateur clique sur le lien envoyé par mail
+		Then Le mot de passe du compte a été modifié
 		
 	@POEI25P2G2-52 @TNR
 	Scenario: US05 -  Accès à la page de réinitialisation de mot de passe

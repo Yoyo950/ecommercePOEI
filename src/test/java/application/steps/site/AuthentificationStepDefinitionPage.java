@@ -87,7 +87,7 @@ public class AuthentificationStepDefinitionPage {
      * Action de cliquer sur le bouton "Create an account".
      */
     @And("Il clique sur le bouton create an account")
-    public void ilCliqueSurLeBoutonCreateAnAccount() {
+    public void ilCliqueSurLeBoutonCreateAnAccount() throws InterruptedException {
         authentificationPage.clickCreateAccountButton();
     }
 
@@ -103,4 +103,8 @@ public class AuthentificationStepDefinitionPage {
     }
 
 
+    @When("Il entre une adresse mail temporaire sur le champ de création")
+    public void ilEntreUneAdresseMailTemporaireSurLeChampDeCreation() throws InterruptedException {
+        authentificationPage.enterEmailForAccountCreation(ConfigReader.getProperty("mail_temporaire"));
+    }
 }

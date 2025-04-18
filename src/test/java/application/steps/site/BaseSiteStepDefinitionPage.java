@@ -163,4 +163,9 @@ public class BaseSiteStepDefinitionPage {
     public void lUtilisateurCliqueSurUnArticleProposé(String article) {
         baseSitePage.clickOnArticle(article);
     }
+
+    @And("L'utilisateur retourne sur le site")
+    public void lUtilisateurRetourneSurLeSite() {
+        baseSitePage.switchToWindowSite();
+    }
 }

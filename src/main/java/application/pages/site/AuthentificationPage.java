@@ -116,11 +116,9 @@ public class AuthentificationPage extends BaseSitePage {
     /**
      * Clique sur le bouton "Create an account" pour démarrer la création de compte.
      */
-    public void clickCreateAccountButton() {
-        int timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-        wait.until(ExpectedConditions.elementToBeClickable(createAccountButton));
+    public void clickCreateAccountButton() throws InterruptedException {
         createAccountButton.click();
+        Thread.sleep(2000);
     }
 
     /**
