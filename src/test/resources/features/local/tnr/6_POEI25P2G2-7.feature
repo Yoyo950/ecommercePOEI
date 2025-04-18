@@ -56,7 +56,7 @@ Feature: US02 - Création d'un compte client
 		When Il remplit le formulaire avec "<genre>", "<prénom>", "<nom>", "<email>", "<motDePasse>", "<dateNaissance>", "<newsletter>"
 		And Il clique sur le bouton REGISTER
 		Then L'utilisateur est sur la page my account
-		And Le message "Your account has been created." est visible
+		And Le message Your account has been created est visible
 		
 		Examples:
 					| genre | prénom | nom     | email         | motDePasse | dateNaissance | newsletter |

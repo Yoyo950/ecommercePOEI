@@ -24,5 +24,4 @@ public class CartStepDefinitionPage {
         Assertions.assertTrue(cartPage.cartTitle.isDisplayed(), "L'utilisateur est sur la page Shopping Cart Summary.");
     }
 
-
 }
