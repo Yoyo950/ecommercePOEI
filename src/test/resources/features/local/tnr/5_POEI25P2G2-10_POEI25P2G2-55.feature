@@ -31,7 +31,7 @@ Feature: US03 - Gestion du compte client : commnades et informations personnelle
 	Scenario: US03 - Retour à la page d'accueil depuis l'espace "My Account"
 		When L'utilisateur se rend sur la page my account
 		And L'utilisateur se rend sur la page accueil
-		Then L'utilisateur est sur la page d'accueil
+		Then L'utilisateur est sur la page accueil
 		
 	@POEI25P2G2-45 @TNR
 	Scenario: US03 - Redirection vers la page de saisie d’adresse

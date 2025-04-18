@@ -34,11 +34,6 @@ public class MyAccountStepDefinitionPage {
     }
 
 
-    @And("L'utilisateur clique sur le bouton Save")
-    public void lUtilisateurCliqueSurLeBoutonSave() {
-        myAccountPage.save_button.click();
-    }
-
     @And("L'utilisateur clique sur my adresses")
     public void lUtilisateurCliqueSurMyAdresses() {
 
@@ -89,18 +84,6 @@ public class MyAccountStepDefinitionPage {
     public void leMessageYourAccountHasBeenCreatedEstVisible() {
         // Verify that the message "Your account has been created" is visible
         Assertions.assertTrue(myAccountPage.account_created_message_field.isDisplayed(), "Le message 'Your account has been created' est visible.");
-    }
-
-
-    @When("L'utilisateur rentre les informations {string}, {string}, {string}, {string}, {string}, {string}")
-    public void lUtilisateurRentreLesInformations(String telephone, String adresse, String ville, String state, String code_postal, String address_title) {
-        // Fill in the address form with the provided information
-        myAccountPage.address_title_field.sendKeys(address_title);
-        myAccountPage.address_field.sendKeys(adresse);
-        myAccountPage.city_field.sendKeys(ville);
-        myAccountPage.selectState.selectByVisibleText(state);
-        myAccountPage.postal_code_field.sendKeys(code_postal);
-        myAccountPage.phone_field.sendKeys(telephone);
     }
 
     @And("L'adresse a été modifiée avec les informations {string}, {string}, {string}, {string}, {string}, {string}")

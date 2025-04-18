@@ -34,4 +34,8 @@ public class HomeStepDefinitionPage {
         // Click on the first advertisement
         homePage.firstAd.click();
     }
+
+    @Given("L{string}accueil")
+    public void lUtilisateurEstSurLaPageDAccueil() {
+    }
 }

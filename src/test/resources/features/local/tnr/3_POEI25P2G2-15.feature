@@ -66,7 +66,7 @@ Feature: US04 - Gestion du compte client authentification
 		
 	@POEI25P2G2-47 @TNR
 	Scenario: US04 - Accès à la page d'authentification depuis la page d’accueil
-		Given L'utilisateur est sur la page d'accueil
+		Given L'utilisateur est sur la page accueil
 		When Il clique sur le bouton Sign In
 		Then L'utilisateur est sur la page authentification
 		
