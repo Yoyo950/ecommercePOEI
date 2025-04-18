@@ -14,6 +14,12 @@ public class ForgotPasswordPage extends BaseSitePage {
     @FindBy(xpath = "//button[@type = 'submit']")
     private WebElement submit;
 
+    @FindBy(xpath = "//div[@id = 'center_column']/div/h1")
+    private WebElement title;
+
+    @FindBy(xpath = "//div[@id = 'center_column']/div/p[@class = 'alert alert-success']")
+    private WebElement alertSuccess;
+
     public ForgotPasswordPage(WebDriverManager webDriverManager) {
         super(webDriverManager);
     }
@@ -24,6 +30,14 @@ public class ForgotPasswordPage extends BaseSitePage {
 
     public void submitEmail() {
         submit.click();
+    }
+
+    public boolean isOnForgotPasswordPage() {
+        return title.getText().equals("Forgot your password?");
+    }
+
+    public boolean mailIsSent() {
+        return alertSuccess.isDisplayed() && alertSuccess.getText().contains("A confirmation email has been sent to your address");
     }
 
 
