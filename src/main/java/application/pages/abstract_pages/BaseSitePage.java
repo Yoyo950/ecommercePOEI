@@ -157,6 +157,14 @@ public abstract class BaseSitePage extends BasePage {
     }
 
     /**
+     * Permet de savoir si l'utilisateur n'est pas connecté
+     * @return true si non connecté, false sinon
+     */
+    public boolean userIsNotConnected() {
+        return sign_in.isDisplayed();
+    }
+
+    /**
      * Permet de vérifier si le bouton 'Sign In' est présent
      * @return true si présent, false sinon
      */
