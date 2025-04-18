@@ -42,8 +42,9 @@ Feature: US03 - Gestion du compte client : commnades et informations personnelle
 	@POEI25P2G2-44 @TNR
 	Scenario: US03 - Présence du bouton 'Add my first Address' pour ajouter une première adresse
 		When L'utilisateur se rend sur la page my account
-		And Il n'a enregistré aucune adresse
-		Then Le bouton add my first address est affiché
+		And Le bouton add my first address est affiché
+		Then Il n'a enregistré aucune adresse
+
 		
 	@POEI25P2G2-42 @TNR
 	Scenario Outline: US03 - Présence des différentes sections sur 'My Account'
