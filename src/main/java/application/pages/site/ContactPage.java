@@ -11,6 +11,16 @@ public class ContactPage extends BaseSitePage {
         super(webDriverManager);
     }
 
-    @FindBy(id = "id_contact")
-    public WebElement SubjectHeading_List_box;
+    @FindBy(css = "h1.page-heading")
+    private WebElement contactPageHeading;
+
+    /**
+     * Vérifie si l'utilisateur est bien sur la page "Contact Us".
+     *
+     * @return true si l'élément "Customer service - Contact us" est visible
+     */
+    public boolean isContactPageDisplayed() {
+        return contactPageHeading.isDisplayed() &&
+                contactPageHeading.getText().equalsIgnoreCase("Customer service - Contact us");
+    }
 }

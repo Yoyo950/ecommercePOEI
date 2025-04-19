@@ -74,8 +74,9 @@ public class AuthentificationPage extends BaseSitePage {
     /**
      * Clique sur le bouton "Sign In" pour soumettre le formulaire de connexion.
      */
-    public void clickSignIn() {
+    public void clickSignIn() throws InterruptedException {
         signInButton.click();
+        Thread.sleep(2000);
     }
 
     /**
@@ -94,9 +95,9 @@ public class AuthentificationPage extends BaseSitePage {
      * Clique sur le lien "Forgot your password?" pour accéder à la page de réinitialisation.
      */
     public void clickForgotPassword() {
-        int timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
+      /*  int timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-        wait.until(ExpectedConditions.elementToBeClickable(forgotPasswordLink));
+        wait.until(ExpectedConditions.elementToBeClickable(forgotPasswordLink));*/
         forgotPasswordLink.click();
     }
 
@@ -106,9 +107,9 @@ public class AuthentificationPage extends BaseSitePage {
      * @param email Email à saisir dans le champ de création de compte.
      */
     public void enterEmailForAccountCreation(String email) {
-        int timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
+      /*  int timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-        wait.until(ExpectedConditions.visibilityOf(emailCreateInput));
+        wait.until(ExpectedConditions.visibilityOf(emailCreateInput));*/
         emailCreateInput.clear();
         emailCreateInput.sendKeys(email);
     }
@@ -117,9 +118,9 @@ public class AuthentificationPage extends BaseSitePage {
      * Clique sur le bouton "Create an account" pour démarrer la création de compte.
      */
     public void clickCreateAccountButton() {
-        int timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
+      /*  int timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-        wait.until(ExpectedConditions.elementToBeClickable(createAccountButton));
+        wait.until(ExpectedConditions.elementToBeClickable(createAccountButton));*/
         createAccountButton.click();
     }
 

@@ -40,7 +40,7 @@ public class AuthentificationStepDefinitionPage {
      * Clique sur le bouton "Sign in" pour tenter la connexion.
      */
     @When("Il clique sur le bouton Sign In")
-    public void ilCliqueSurLeBoutonSignIn() {
+    public void ilCliqueSurLeBoutonSignIn() throws InterruptedException {
         authentificationPage.clickSignIn();
     }
 

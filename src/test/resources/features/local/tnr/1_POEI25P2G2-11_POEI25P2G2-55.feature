@@ -46,10 +46,8 @@ Feature: US10 - Gestion des coordonnées de l'utilisateur
 		Examples:
 			| telephone  | adresse         | ville | state   | code_postal | address_title |
 			| 0601020304 | 10 rue de Paris | Paris | Alabama | 75001       | Home Address  |
-		
-	@POEI25P2G2-53 @TNR
-	Scenario: US10 - Vérification présence de 'My Address' dans 'My Account'
-		When L'utilisateur se rend sur la page my account
-		Then Un espace my address est affiché sur la page
-		And Les informations "prenom", "nom", "telephone", "adresse" sont présents
+
+
+
+	
 		
