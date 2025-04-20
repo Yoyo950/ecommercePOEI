@@ -21,14 +21,6 @@ public class HomeStepDefinitionPage {
         Assertions.assertTrue(homePage.homePageTabs.isDisplayed(), "L'utilisateur est sur la page Home.");
     }
 
-    @And("Il clique sur le bouton add my first address")
-    public void ilCliqueSurLeBoutonAddMyFirstAddress() {
-
-        // Click on the "Add My First Address" button
-        homePage.addMyFirstAddressButton.click();
-
-    }
-
     @When("L'utilisateur clique sur une publicité à la une")
     public void lUtilisateurCliqueSurUnePublicitéÀLaUne() {
         // Click on the first advertisement

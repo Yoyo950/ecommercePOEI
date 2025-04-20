@@ -2,9 +2,9 @@ package application.pages.site;
 
 import application.pages.abstract_pages.BaseSitePage;
 import application.utils.WebDriverManager;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 
 public class MyAccountPage extends BaseSitePage {
 
@@ -12,23 +12,34 @@ public class MyAccountPage extends BaseSitePage {
         super(webDriverManager);
     }
 
-    @FindBy(xpath = "//*[@id='center_column']/div/div/ul/li[2]/a/span")
+    public WebDriver getDriver() {
+        return driver;
+    }
+
+
+
+    @FindBy(xpath = "//span[contains(text(),'Order history and details')]")
     public WebElement order_history_and_details_button;
 
-    @FindBy(xpath = "//*[@id='center_column']/div/div/ul/li[3]/a/span")
+    @FindBy(xpath = "//span[contains(text(),'My credit slips')]")
     public WebElement my_credit_slips_button;
 
-    @FindBy(xpath = "//*[@id='center_column']/div/div/ul/li[4]/a/span")
+    @FindBy(xpath = "//span[contains(text(),'My addresses')]")
     public WebElement my_addresses_button;
 
-    @FindBy(xpath = "//*[@id='center_column']/div/div/ul/li[5]/a/span")
+    @FindBy(xpath = "//span[contains(text(),'My personal information')]")
     public WebElement my_personal_information_button;
 
 
     @FindBy(xpath = "//*[@id='center_column']/div[2]/a")
     public WebElement add_a_new_address_button;
 
-    @FindBy(xpath ="//*[@id='center_column']/div/div/ul/li[3]/a")
+
+    @FindBy(xpath = "//a[@title='Add my first address']")
+    public WebElement add_my_first_address_button;
+
+
+    @FindBy(xpath = "//*[@id='center_column']/div/div/ul/li[3]/a")
     public WebElement my_adresses_button;
 
     @FindBy(xpath = "//*[@id='center_column']/div[1]/div/div/ul/li[9]/a[1]")
@@ -43,11 +54,9 @@ public class MyAccountPage extends BaseSitePage {
     @FindBy(xpath = "//*[@id='center_column']/p[2]")
     public WebElement no_address_message_field;
 
-    @FindBy(xpath = "//*[@id='center_column']/div/div/ul/li[1]/a")
-    public WebElement add_my_first_address_button;
-
     @FindBy(xpath = "//*[@id='center_column']/p[1]")
     public WebElement account_created_message_field;
+
 
     @FindBy(id="alias")
     public WebElement address_title_field;
@@ -60,7 +69,6 @@ public class MyAccountPage extends BaseSitePage {
 
     @FindBy(id="id_state")
     public WebElement state_field;
-    //public Select selectState = new Select(state_field);
 
     @FindBy(id = "postcode")
     public WebElement postal_code_field;

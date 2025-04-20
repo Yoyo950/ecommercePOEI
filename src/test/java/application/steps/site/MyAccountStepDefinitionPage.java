@@ -1,12 +1,18 @@
 package application.steps.site;
 
 import application.pages.site.MyAccountPage;
+import application.utils.ConfigReader;
 import application.utils.WebDriverManager;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class MyAccountStepDefinitionPage {
     private final MyAccountPage myAccountPage;
@@ -15,6 +21,8 @@ public class MyAccountStepDefinitionPage {
         myAccountPage = new MyAccountPage(webDriverManager);
     }
 
+
+
     @And("L'utilisateur clique sur créer une adresse")
     public void lUtilisateurCliqueSurCréerUneAdresse() {
         myAccountPage.add_a_new_address_button.click();
@@ -22,9 +30,22 @@ public class MyAccountStepDefinitionPage {
 
     @Then("L'utilisateur est sur la page my account")
     public void lUtilisateurEstSurLaPageMyAccount() {
-        // Vérifie que l'utilisateur est bien sur la page "My Account" en détectant un élément sûr
-        Assertions.assertTrue(myAccountPage.order_history_and_details_button.isDisplayed(), "L'utilisateur n'est pas sur la page My Account.");
+        int timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
+        WebDriverWait wait = new WebDriverWait(myAccountPage.getDriver(), Duration.ofSeconds(timeout)); // <-- ICI getDriver()
+
+        wait.until(ExpectedConditions.visibilityOf(myAccountPage.order_history_and_details_button));
+
+        Assertions.assertTrue(myAccountPage.order_history_and_details_button.isDisplayed(),
+                "L'utilisateur n'est pas sur la page My Account.");
     }
+
+
+
+//    @Then("L'utilisateur est sur la page my account")
+//    public void lUtilisateurEstSurLaPageMyAccount() {
+//        // Vérifie que l'utilisateur est bien sur la page "My Account" en détectant un élément sûr
+//        Assertions.assertTrue(myAccountPage.order_history_and_details_button.isDisplayed(), "L'utilisateur n'est pas sur la page My Account.");
+//    }
 
 
 //    @Then("L'utilisateur est sur la page my account")
@@ -54,8 +75,24 @@ public class MyAccountStepDefinitionPage {
 
     @And("Le bouton add my first address est affiché")
     public void leBoutonAddMyFirstAddressEstAffiché() {
-        Assertions.assertTrue(myAccountPage.add_my_first_address_button.isDisplayed(), "Le bouton 'Add my first address' apparaît.");
+        int timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
+        WebDriverWait wait = new WebDriverWait(myAccountPage.getDriver(), Duration.ofSeconds(timeout));
+        wait.until(ExpectedConditions.visibilityOf(myAccountPage.add_my_first_address_button));
+        Assertions.assertTrue(myAccountPage.add_my_first_address_button.isDisplayed(),
+                "Le bouton 'Add my first address' n'est pas affiché !");
     }
+
+    @And("Il clique sur le bouton add my first address")
+    public void ilCliqueSurLeBoutonAddMyFirstAddress() {
+        myAccountPage.add_my_first_address_button.click();
+    }
+
+
+
+//    @And("Le bouton add my first address est affiché")
+//    public void leBoutonAddMyFirstAddressEstAffiché() {
+//        Assertions.assertTrue(myAccountPage.add_my_first_address_button.isDisplayed(), "Le bouton 'Add my first address' apparaît.");
+//    }
 
     @Then("La section {string} est visible")
     public void laSectionEstVisible(String section) {

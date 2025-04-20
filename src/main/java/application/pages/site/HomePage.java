@@ -15,8 +15,6 @@ public class HomePage extends BaseSitePage {
     @FindBy(id ="home-page-tabs")
     public WebElement homePageTabs;
 
-    @FindBy(xpath = "//a[@title='My first address']")
-    public WebElement addMyFirstAddressButton;
 
     @FindBy(xpath ="//*[@id=\"homeslider\"]/li[2]/div")
     public WebElement firstAd;
