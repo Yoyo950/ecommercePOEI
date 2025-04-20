@@ -282,8 +282,10 @@ public abstract class BaseSitePage extends BasePage {
     public void clickOnArticle(String article) {
         List<WebElement> list = list_results.findElements(By.xpath("//li"));
         for(WebElement elem : list) {
+
             if(elem.getText().contains(article)){
                 elem.click();
+                break;
             }
         }
     }

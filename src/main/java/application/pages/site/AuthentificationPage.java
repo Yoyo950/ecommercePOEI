@@ -47,6 +47,10 @@ public class AuthentificationPage extends BaseSitePage {
     @FindBy(id = "create_account_error")
     private WebElement accountCreationError;
 
+    @FindBy(id = "customer_firstname")
+    private WebElement createAccountFirstNameField;
+
+
 
     /**
      * Constructeur de la page Authentification.
@@ -85,9 +89,10 @@ public class AuthentificationPage extends BaseSitePage {
      * @return true si le titre "Authentication" est visible, false sinon.
      */
     public boolean isAuthenticationPageDisplayed() {
-        int timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-        wait.until(ExpectedConditions.visibilityOf(authenticationTitle));
+//        int timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+//        wait.until(ExpectedConditions.visibilityOf(authenticationTitle));
+        System.out.println("debugage; "+authenticationTitle.getText());
         return authenticationTitle.isDisplayed();
     }
 
@@ -117,12 +122,36 @@ public class AuthentificationPage extends BaseSitePage {
     /**
      * Clique sur le bouton "Create an account" pour démarrer la création de compte.
      */
+//    public void clickCreateAccountButton() {
+//        int timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+//
+//        wait.until(ExpectedConditions.elementToBeClickable(createAccountButton));
+//        createAccountButton.click();
+//
+//        wait.until(ExpectedConditions.visibilityOf(createAccountFirstNameField));
+//    }
+
     public void clickCreateAccountButton() {
-      /*  int timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
+        int timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-        wait.until(ExpectedConditions.elementToBeClickable(createAccountButton));*/
+
+        // Clic sur le bouton
+        wait.until(ExpectedConditions.elementToBeClickable(createAccountButton));
         createAccountButton.click();
+
+        // Maintenant attendre soit le champ prénom soit le message d'erreur
+        try {
+            wait.until(ExpectedConditions.or(
+                    ExpectedConditions.visibilityOf(createAccountFirstNameField),
+                    ExpectedConditions.visibilityOf(accountCreationError)
+            ));
+        } catch (Exception e) {
+            System.out.println("Ni formulaire, ni erreur affichée après création de compte");
+        }
     }
+
+
 
     /**
      * Récupère le message d'erreur affiché lors de la création de compte.

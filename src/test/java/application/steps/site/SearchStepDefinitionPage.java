@@ -5,6 +5,8 @@ import application.utils.WebDriverManager;
 import io.cucumber.java.en.Then;
 import org.junit.jupiter.api.Assertions;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class SearchStepDefinitionPage {
     private final SearchPage searchPage;
 
@@ -14,14 +16,12 @@ public class SearchStepDefinitionPage {
 
     @Then("L'utilisateur est sur la page search")
     public void lUtilisateurEstSurLaPageSearch() {
-
-        // Verify that the user is on the search page
-        Assertions.assertTrue(searchPage.search_result_title_bar.isDisplayed(), "L'utilisateur est sur la page 'Search'.");
+        assertTrue(searchPage.search_result_title_bar.isDisplayed(), "L'utilisateur n'est pas sur la page 'Search'.");
     }
 
     @Then("La page des articles de la catégorie {string} s'affiche")
-    public void laPageDesArticlesDeLaCatégorieSAffiche(String category) {
-        // Verify that the page of items in the specified category is displayed
-        Assertions.assertEquals(searchPage.search_result_title_bar.getAttribute("value"), category, "La page de la catégorie de produit voulu s'affiche bien.");
+    public void laPageDesArticlesDeLaCatégorieSAffiche(String categorie) {
+        String displayedCategory = searchPage.getDisplayedCategoryName();
+        Assertions.assertEquals(categorie.toUpperCase(), displayedCategory.toUpperCase(), "La page de la catégorie '" + categorie + "' ne s'affiche pas correctement !");
     }
 }

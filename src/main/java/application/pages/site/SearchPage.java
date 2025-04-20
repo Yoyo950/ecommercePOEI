@@ -13,7 +13,13 @@ public class SearchPage extends BaseSitePage {
     @FindBy(xpath= "//*[@id='center_column']/h1")
     public WebElement search_result_title_bar;
 
-    @FindBy(id ="search_query_top")
-    public WebElement search_bar;
+    @FindBy(css = "span.cat-name")
+    private WebElement categoryNameElement;
 
+    /**
+     * Récupère directement le texte du span contenant uniquement le nom de la catégorie.
+     */
+    public String getDisplayedCategoryName() {
+        return categoryNameElement.getText().trim();
+    }
 }

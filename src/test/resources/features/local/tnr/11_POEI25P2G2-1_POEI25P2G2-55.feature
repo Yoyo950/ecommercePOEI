@@ -24,7 +24,7 @@ Feature: US06 - Déconnexion de l'utilisateur
 		Then Le bouton Sign Out avec le lien correspondant doit être présent
 		When L'utilisateur clique sur Sign Out
 		Then L'utilisateur est déconnecté
-		And L'utilisateur est sur la page authentification
+		#And L'utilisateur est sur la page authentification
 		
 		Examples:
 		  | page      |

@@ -24,7 +24,7 @@ public class CreateAccountStepDefinitionPage {
     /**
      * Remplit le formulaire de création d'un compte utilisateur.
      */
-    @When("Il remplit le formulaire avec {string}, {string}, {string}, {string}, {string}, {string}, {string}")
+    @When("Il remplit le formulaire avec {string}, {string}, {string}, {string}, {string}, {string}")
     public void ilRemplitLeFormulaireAvecTousLesChamps(String genre, String prenom, String nom, String motDePasse, String dateNaissance, String newsletter) {
         createAccountPage.remplirFormulaireCreationCompte(genre, prenom, nom, motDePasse, dateNaissance, newsletter);
     }

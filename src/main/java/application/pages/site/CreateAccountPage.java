@@ -87,9 +87,16 @@ public class CreateAccountPage extends BaseSitePage {
 
         if (!dateNaissance.isEmpty()) {
             String[] parts = dateNaissance.split("/");
-            new Select(dayOfBirthSelect).selectByValue(parts[0]);
-            new Select(monthOfBirthSelect).selectByValue(parts[1]);
-            new Select(yearOfBirthSelect).selectByValue(parts[2]);
+            String day = String.valueOf(Integer.parseInt(parts[0]));
+            int monthNumber = Integer.parseInt(parts[1]);
+            String year = parts[2];
+
+            new Select(dayOfBirthSelect).selectByValue(day);
+
+            // Sélectionner par index (1 = January, 2 = February, etc.)
+            new Select(monthOfBirthSelect).selectByIndex(monthNumber);
+
+            new Select(yearOfBirthSelect).selectByValue(year);
         }
 
         if (newsletter.equalsIgnoreCase("coché") && !newsletterCheckbox.isSelected()) {
@@ -98,6 +105,8 @@ public class CreateAccountPage extends BaseSitePage {
             newsletterCheckbox.click();
         }
     }
+
+
 
     /**
      * Clique sur le bouton "Register" pour finaliser la création du compte.
@@ -130,6 +139,10 @@ public class CreateAccountPage extends BaseSitePage {
         int timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
         wait.until(ExpectedConditions.visibilityOf(pageHeading));
-        return pageHeading.getText().trim().equalsIgnoreCase("Create an account");
+
+        String headingText = pageHeading.getText().trim().toLowerCase();
+        System.out.println("Titre détecté : " + headingText);
+        return headingText.contains("create an account");
     }
+
 }
