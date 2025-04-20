@@ -20,9 +20,9 @@ Feature: US08 - Recherche des articles sur le site
 		And L'article "<article>" est présent dans la liste de résultats
 		
 		Examples:
-		  | input | article |
-		  | ex1   | test1   |
-		  | ex2   | tet2    |
+			| input  | article                 |
+			| blou   | Blouse                  |
+			| summ   | Printed Summer Dress    |
 		
 	@POEI25P2G2-33 @TNR
 	Scenario Outline: US08 - Proposition d'articles lors de la recherche
@@ -30,11 +30,11 @@ Feature: US08 - Recherche des articles sur le site
 		Then L'article "<article>" doit être proposé
 		When L'utilisateur clique sur un article "<article>" proposé
 		Then L'utilisateur est sur la page article de "<article>"
-		
+
 		Examples:
-		  | input | article |
-		  | ex1   | test1   |
-		  | ex2   | tet2    |
+			| input  | article                 |
+			| blou   | Blouse                  |
+			| summ   | Printed Summer Dress    |
 		
 	@POEI25P2G2-31 @TNR
 	Scenario Outline: US08 - Présence du champ et de la loupe dans toutes les pages

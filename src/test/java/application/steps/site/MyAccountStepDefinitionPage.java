@@ -7,6 +7,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 
+import java.time.Duration;
+
 public class MyAccountStepDefinitionPage {
     private final MyAccountPage myAccountPage;
 
@@ -89,11 +91,22 @@ public class MyAccountStepDefinitionPage {
     @And("L'adresse a été modifiée avec les informations {string}, {string}, {string}, {string}, {string}, {string}")
     public void lAdresseAÉtéModifiéeAvecLesInformations(String telephone, String adresse, String ville, String state, String code_postal, String address_title) {
         // Verify that the address has been modified with the provided information
-        Assertions.assertEquals(myAccountPage.address_title_field.getAttribute("value"), address_title, "L'adresse_title_field a été modifiée avec succès.");
-        Assertions.assertEquals(myAccountPage.address_field.getAttribute("value"), adresse, "Adress a été modifiée avec succès.");
-        Assertions.assertEquals(myAccountPage.city_field.getAttribute("value"), ville, "City a été modifiée avec succès.");
-        Assertions.assertEquals(myAccountPage.selectState.getFirstSelectedOption().getText(), state, "State a été modifiée avec succès.");
-        Assertions.assertEquals(myAccountPage.postal_code_field.getAttribute("value"), code_postal, "Postal_code a été modifiée avec succès.");
-        Assertions.assertEquals(myAccountPage.phone_field.getAttribute("value"), telephone, "Phone a été modifiée avec succès.");
+        Assertions.assertEquals(myAccountPage.address_title_field.getText(), address_title, "L'adresse_title_field a été modifiée avec succès.");
+        Assertions.assertEquals(myAccountPage.address_field.getText(), adresse, "Adress a été modifiée avec succès.");
+        Assertions.assertEquals(myAccountPage.city_field.getText().replaceAll("\\p{Punct}", ""), ville, "City a été modifiée avec succès.");
+        Assertions.assertEquals(myAccountPage.state_field.getText(), state, "State a été modifiée avec succès.");
+        Assertions.assertEquals(myAccountPage.postal_code_field.getText(), code_postal, "Postal_code a été modifiée avec succès.");
+        Assertions.assertEquals(myAccountPage.phone_field.getText(), telephone, "Phone a été modifiée avec succès.");
+    }
+
+    @And("L'adresse a été créée avec les informations {string}, {string}, {string}, {string}, {string}, {string}")
+    public void lAdresseAÉtéCrééeAvecLesInformations(String telephone, String adresse, String ville, String state, String code_postal, String address_title) {
+
+        Assertions.assertEquals(myAccountPage.address_title_field.getText(), address_title, "L'adresse_title_field a été crée avec succès.");
+        Assertions.assertEquals(myAccountPage.address_field.getText(), adresse, "Adress a été crée avec succès.");
+        Assertions.assertEquals(myAccountPage.city_field.getText().replaceAll("\\p{Punct}", ""), ville, "City a été crée avec succès.");
+        Assertions.assertEquals(myAccountPage.state_field.getText(), state, "State a été crée avec succès.");
+        Assertions.assertEquals(myAccountPage.postal_code_field.getText(), code_postal, "Postal_code a été crée avec succès.");
+        Assertions.assertEquals(myAccountPage.phone_field.getText(), telephone, "Phone a été crée avec succès.");
     }
 }

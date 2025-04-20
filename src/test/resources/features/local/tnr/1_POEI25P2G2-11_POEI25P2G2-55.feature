@@ -22,6 +22,7 @@ Feature: US10 - Gestion des coordonnées de l'utilisateur
 	@POEI25P2G2-60 @TNR
 	Scenario Outline: US10 - Création d'adresse
 		Given L'utilisateur se rend sur la page my account
+		And L'utilisateur clique sur my adresses
 		And L'utilisateur clique sur créer une adresse
 		Then L'utilisateur est sur la page création adresse
 		When L'utilisateur rentre les informations "<telephone>", "<adresse>", "<ville>", "<state>", "<code_postal>", "<address_title>"
@@ -31,11 +32,11 @@ Feature: US10 - Gestion des coordonnées de l'utilisateur
 
 		Examples:
 			| telephone  | adresse         | ville | state   | code_postal | address_title |
-			| 0601020304 | 10 rue de Paris | Paris | Alabama | 75001       | Home Address  |
+			| 0601020304 | 10 rue de Paris | Paris | Alabama | 75001       | HOME ADDRESS  |
 
 	@POEI25P2G2-59 @TNR
 	Scenario Outline: US10 - Modification d'adresse
-		When L'utilisateur est sur la page my account
+		When L'utilisateur se rend sur la page my account
 		And L'utilisateur clique sur my adresses
 		And L'utilisateur clique sur Update
 		When L'utilisateur rentre les informations "<telephone>", "<adresse>", "<ville>", "<state>", "<code_postal>", "<address_title>"
@@ -45,7 +46,7 @@ Feature: US10 - Gestion des coordonnées de l'utilisateur
 
 		Examples:
 			| telephone  | adresse         | ville | state   | code_postal | address_title |
-			| 0601020304 | 10 rue de Paris | Paris | Alabama | 75001       | Home Address  |
+			| 0601020304 | 10 rue de Paris | Paris | Alabama | 75001       | HOME ADDRESS  |
 		
 	@POEI25P2G2-53 @TNR
 	Scenario: US10 - Vérification présence de 'My Address' dans 'My Account'
