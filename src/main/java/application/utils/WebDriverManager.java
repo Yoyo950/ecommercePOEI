@@ -39,10 +39,10 @@ public class WebDriverManager {
      */
     private WebDriver getDriverConfig() {
         //Determines if the execution of tests is in headless or not
-        boolean isHeadless = ConfigReader.getProperty("headless").equals("true");
+        boolean isHeadless = Boolean.parseBoolean(System.getenv("HL"));
         WebDriver tempDriver;
         //Depending on 'browser' property, change browser used in WebDriver
-        switch (ConfigReader.getProperty("browser")) {
+        switch (System.getenv("BRWSR")) {
             case "edge":
                 EdgeOptions edgeOptions = new EdgeOptions();
                 if(isHeadless){
