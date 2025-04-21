@@ -13,6 +13,11 @@ public class SearchPage extends BaseSitePage {
     @FindBy(xpath= "//*[@id='center_column']/h1")
     public WebElement search_result_title_bar;
 
+    @FindBy(xpath = "//a[@class='product_img_link' and @title='Blouse']")
+    public WebElement blouse_article;
+
+    @FindBy(xpath = "//*[@id='center_column']/ul/li[1]/div/div[2]/h5/a")
+    public WebElement summer_dress_article;
     @FindBy(css = "span.cat-name")
     private WebElement categoryNameElement;
 
