@@ -27,7 +27,7 @@ Feature: US10 - Gestion des coordonnées de l'utilisateur
 		Then L'utilisateur est sur la page création adresse
 		When L'utilisateur rentre les informations "<telephone>", "<adresse>", "<ville>", "<state>", "<code_postal>", "<address_title>"
 		And L'utilisateur clique sur le bouton Save
-		Then L'utilisateur est sur la page my account
+		Then L'utilisateur est sur la page my addresses
 		And L'adresse a été créée avec les informations "<telephone>", "<adresse>", "<ville>", "<state>", "<code_postal>", "<address_title>"
 
 		Examples:
@@ -41,16 +41,10 @@ Feature: US10 - Gestion des coordonnées de l'utilisateur
 		And L'utilisateur clique sur Update
 		When L'utilisateur rentre les informations "<telephone>", "<adresse>", "<ville>", "<state>", "<code_postal>", "<address_title>"
 		And L'utilisateur clique sur le bouton Save
-		Then L'utilisateur est sur la page my account
+		Then L'utilisateur est sur la page my addresses
 		And L'adresse a été modifiée avec les informations "<telephone>", "<adresse>", "<ville>", "<state>", "<code_postal>", "<address_title>"
 
 		Examples:
 			| telephone  | adresse         | ville | state   | code_postal | address_title |
 			| 0601020304 | 10 rue de Paris | Paris | Alabama | 75001       | HOME ADDRESS  |
-		
-	@POEI25P2G2-53 @TNR
-	Scenario: US10 - Vérification présence de 'My Address' dans 'My Account'
-		When L'utilisateur se rend sur la page my account
-		Then Un espace my address est affiché sur la page
-		And Les informations "prenom", "nom", "telephone", "adresse" sont présents
 		

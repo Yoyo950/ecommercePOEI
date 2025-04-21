@@ -154,4 +154,9 @@ public class MyAccountStepDefinitionPage {
         Assertions.assertEquals(myAccountPage.postal_code_field.getText(), code_postal, "Postal_code a été crée avec succès.");
         Assertions.assertEquals(myAccountPage.phone_field.getText(), telephone, "Phone a été crée avec succès.");
     }
+
+    @Then("L'utilisateur est sur la page my addresses")
+    public void lUtilisateurEstSurLaPageMyAddresses() {
+        Assertions.assertTrue(myAccountPage.add_a_new_address_button.isDisplayed());
+    }
 }

@@ -50,5 +50,4 @@ public class CreateAccountStepDefinitionPage {
     public void verifierUtilisateurSurPageCreateAccount() {
         assertTrue(createAccountPage.estSurPageCreateAccount(), "L'utilisateur n'est pas sur la page Create an Account !");
     }
-
 }

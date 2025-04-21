@@ -50,6 +50,8 @@ public class AuthentificationPage extends BaseSitePage {
     @FindBy(id = "customer_firstname")
     private WebElement createAccountFirstNameField;
 
+    @FindBy(xpath = "//*[@id = 'center_column']/div[@class = 'alert alert-danger']")
+    private WebElement errorConnexion;
 
 
     /**
@@ -99,10 +101,7 @@ public class AuthentificationPage extends BaseSitePage {
     /**
      * Clique sur le lien "Forgot your password?" pour accéder à la page de réinitialisation.
      */
-    public void clickForgotPassword() {
-      /*  int timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-        wait.until(ExpectedConditions.elementToBeClickable(forgotPasswordLink));*/
+    public void clickForgotPassword() throws InterruptedException {
         forgotPasswordLink.click();
     }
 
@@ -112,9 +111,6 @@ public class AuthentificationPage extends BaseSitePage {
      * @param email Email à saisir dans le champ de création de compte.
      */
     public void enterEmailForAccountCreation(String email) {
-      /*  int timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-        wait.until(ExpectedConditions.visibilityOf(emailCreateInput));*/
         emailCreateInput.clear();
         emailCreateInput.sendKeys(email);
     }
@@ -159,11 +155,16 @@ public class AuthentificationPage extends BaseSitePage {
      * @return le texte du message d'erreur.
      */
     public String getAccountCreationErrorMessage() {
-        int timeout = Integer.parseInt(ConfigReader.getProperty("timeout"));
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-        wait.until(ExpectedConditions.visibilityOf(accountCreationError));
         return accountCreationError.getText().trim();
     }
 
+    /**
+     * Permet de vérifier si le message d'erreur de connexion est bien présent sur la page
+     * @param message Le message attendu
+     * @return true si présent, false sinon
+     */
+    public boolean messageErrorIsPresent(String message) {
+        return errorConnexion.getText().contains(message);
+    }
 
 }

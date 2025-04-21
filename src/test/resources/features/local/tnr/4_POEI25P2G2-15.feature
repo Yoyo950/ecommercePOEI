@@ -24,16 +24,16 @@ Feature: US04 - Gestion du compte client authentification
 
 	@POEI25P2G2-50 @TNR
 	Scenario Outline: US04 - Connexion échouée avec des identifiants incorrects
-		Given l'utilisateur est sur la page d'authentification
-		When il entre son identifiant "<email>" et son mot de passe "<motDePasse>"
-		And il clique sur le bouton "Sign in"
-		Then le message "<message>" s'affiche
+		Given L'utilisateur se rend sur la page authentification
+		When Il entre son identifiant "<email>" et son mot de passe "<motDePasse>"
+		And Il clique sur le bouton Sign In
+		Then Le message erreur de connexion "<message>" s'affiche
 		
 		Examples:
-		  | email               | motDePasse | message            |
-		  | mauvais@test.com    | correct123 | Invalid password   |
-		  | utilisateur@test.com| fauxpass   | Invalid password   |
-		  | ""                  | correct123 | Invalid password   |
+		  | email                | motDePasse | message                     |
+		  | mauvais@test.com     | correct123 | Authentication failed       |
+		  | utilisateur@test.com |            | Password is required        |
+		  |                      | correct123 | An email address required   |
 		
 	#Tests *En tant qu'* 
 	#

@@ -20,11 +20,13 @@ Feature: US05 -  Ré-initialiser mon mot de passe
 
 	Background:
 		#@POEI25P2G2-90
+		Given L'utilisateur crée une adresse mail temporaire
+		And L'utilisateur retourne sur le site
 		When L'utilisateur se rend sur la page authentification
 		And Il entre une adresse mail temporaire sur le champ de création
 		And Il clique sur le bouton create an account
 		Then L'utilisateur est sur la page create an account
-		When Il remplit le formulaire avec des données pour l'email temporaire
+		When Il remplit le formulaire avec "Mme", "Test", "Jean", "azerty", "14/07/1989", "non coché"
 		And Il clique sur le bouton REGISTER
 		Then L'utilisateur est sur la page my account
 		And Le message Your account has been created est visible
@@ -32,10 +34,12 @@ Feature: US05 -  Ré-initialiser mon mot de passe
 		Then L'utilisateur est déconnecté
 
 	@POEI25P2G2-57 @TNR
-	Scenario: US05 -  Parcours complet de réinitialisation du mot de passe
+	Scenario: US05 -  Demande de réinitialisation de mot de passe
 		Given L'utilisateur se rend sur la page authentification
 		And L'utilisateur se rend sur la page réinitialisation du mot de passe
 		When Il saisit son adresse email dans le champ prévu
 		And Il clique sur le bouton retrieve password
 		Then Une demande de réinitialisation est envoyée à l'adresse saisie
+		When L'utilisateur clique sur le lien envoyé par mail
+		Then Le mot de passe du compte a été modifié
 		

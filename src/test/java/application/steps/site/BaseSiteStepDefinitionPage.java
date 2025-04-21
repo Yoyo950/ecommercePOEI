@@ -149,7 +149,7 @@ public class BaseSiteStepDefinitionPage {
     }
 
     @And("Son nom et prénom apparaissent dans la barre de menu")
-    public void sonNomEtPrénomApparaissentDansLaBarreDeMenu() {
+    public void sonNomEtPrenomApparaissentDansLaBarreDeMenu() {
         Assertions.assertTrue(baseSitePage.nameAndSurnameIsDisplayed(ConfigReader.getProperty("name"), ConfigReader.getProperty("surname")));
     }
 
@@ -162,5 +162,10 @@ public class BaseSiteStepDefinitionPage {
     @When("L'utilisateur clique sur un article {string} proposé")
     public void lUtilisateurCliqueSurUnArticleProposé(String article) {
         baseSitePage.clickOnArticle(article);
+    }
+
+    @And("L'utilisateur retourne sur le site")
+    public void lUtilisateurRetourneSurLeSite() {
+        baseSitePage.switchToWindowSite();
     }
 }

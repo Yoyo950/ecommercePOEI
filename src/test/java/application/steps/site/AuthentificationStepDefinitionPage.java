@@ -6,6 +6,7 @@ import application.utils.WebDriverManager;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.And;
+import org.junit.jupiter.api.Assertions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -56,7 +57,7 @@ public class AuthentificationStepDefinitionPage {
      * Action de cliquer sur "Forgot your password?" pour accéder à la page de réinitialisation.
      */
     @When("L'utilisateur se rend sur la page réinitialisation du mot de passe")
-    public void utilisateurSeRendSurLaPageReinitialisationMotDePasse() {
+    public void utilisateurSeRendSurLaPageReinitialisationMotDePasse() throws InterruptedException {
         authentificationPage.clickForgotPassword();
     }
     /**
@@ -102,5 +103,22 @@ public class AuthentificationStepDefinitionPage {
         assertEquals(expectedMessage, actualMessage, "Le message affiché ne correspond pas.");
     }
 
+    /**
+     * Récupération de l'adresse mail temporaire pour la création
+     * @throws InterruptedException
+     */
+    @When("Il entre une adresse mail temporaire sur le champ de création")
+    public void ilEntreUneAdresseMailTemporaireSurLeChampDeCreation() throws InterruptedException {
+        authentificationPage.enterEmailForAccountCreation(ConfigReader.getProperty("mail_temporaire"));
+    }
 
+    @When("Il entre son identifiant {string} et son mot de passe {string}")
+    public void ilEntreSonIdentifiantEtSonMotDePasse(String email, String password) {
+        authentificationPage.enterCredentials(email, password);
+    }
+
+    @Then("Le message erreur de connexion {string} s'affiche")
+    public void leMessageErreurDeConnexionSAffiche(String message) {
+        Assertions.assertTrue(authentificationPage.messageErrorIsPresent(message));
+    }
 }

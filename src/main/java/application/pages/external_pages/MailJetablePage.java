@@ -3,6 +3,7 @@ package application.pages.external_pages;
 import application.pages.abstract_pages.BasePage;
 import application.utils.ConfigReader;
 import application.utils.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
@@ -25,11 +26,14 @@ public class MailJetablePage extends BasePage {
     @FindBy(name = "login")
     private WebElement login;
 
-    @FindBy(xpath = "//*[@id='mail']/div/table/tbody/tr/td[2]/table/tbody/tr[4]/td/table/tbody/tr/td[2]/font/p")
+    @FindBy(xpath = "/html/body/header/div[3]/div[1]")
     private WebElement titleMailMdp;
 
     @FindBy(id = "refresh")
     private WebElement refresh;
+
+    @FindBy(id = "dismiss-button")
+    private WebElement dismissPopUp;
 
     private String windowHandle;
 
@@ -64,8 +68,10 @@ public class MailJetablePage extends BasePage {
      */
     public boolean verifyMail() throws InterruptedException {
         driver.switchTo().window(windowHandle);
+        driver.navigate().refresh();
+        Thread.sleep(20000);
         this.switchToFirstMail();
-        boolean temp = titleMailMdp.getText().trim().equals("Your new My Shop login details");
+        boolean temp = titleMailMdp.getText().trim().contains("Your new password");
         driver.switchTo().defaultContent();
         return temp;
     }

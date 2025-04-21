@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -70,15 +71,20 @@ public abstract class BaseSitePage extends BasePage {
     @FindBy(xpath = "//div[@class = 'ac_results']/ul")
     private WebElement list_results;
 
-    private final String windowHandle;
-
+    /**
+     * Constructeur de la classe, hérite de BasePage
+     * @param webDriverManager Le WebDriverManager obtenu via PicoContainer
+     */
     public BaseSitePage(WebDriverManager webDriverManager) {
         super(webDriverManager);
-        windowHandle = webDriverManager.getWebDriver().getWindowHandle();
     }
 
-    public String getWindowHandle() {
-        return windowHandle;
+    /**
+     * Permet de retourner sur la fenêtre du site
+     */
+    public void switchToWindowSite() {
+        List<String> list = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(list.get(0));
     }
 
     /**
@@ -293,4 +299,6 @@ public abstract class BaseSitePage extends BasePage {
             }
         }
     }
+
+
 }
