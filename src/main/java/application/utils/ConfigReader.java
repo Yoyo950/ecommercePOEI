@@ -5,18 +5,18 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
- * Class used to read the config file and extract the properties
+ * Classe utilisée pour lire le config.properties et extraire ses données.
  * @author Yoann DAGAND
  */
 public class ConfigReader {
 
     /**
-     * Where the properties are stocked
+     * Là où les propriétés sont stockées.
      */
     private static final Properties properties;
 
     static {
-        //Instantiate the properties with the config.properties file
+        //Instantie les propriétés via le config.properties
         try (FileInputStream fileInputStream = new FileInputStream("src/main/resources/config.properties")) {
             properties = new Properties();
             properties.load(fileInputStream);
@@ -27,9 +27,9 @@ public class ConfigReader {
     }
 
     /**
-     * The getter for properties
-     * @param key The key of the property searched
-     * @return The property searched
+     * Le Getter des propriétés
+     * @param key La clé de la propriété recherchée
+     * @return La propriété recherchée.
      */
     public static String getProperty(String key) {
         return properties.getProperty(key);

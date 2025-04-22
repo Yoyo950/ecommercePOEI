@@ -11,6 +11,10 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 
+/**
+ * La classe contenant toutes les steps liées à BaseSitePage
+ * @author Yoann DAGAND
+ */
 public class BaseSiteStepDefinitionPage {
     private final BaseSitePage baseSitePage;
 

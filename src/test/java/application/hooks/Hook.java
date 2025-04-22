@@ -6,23 +6,29 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-
 import java.net.MalformedURLException;
 
+/**
+ * La classe définissant les Hook utilisés pour les tests
+ * @author Yoann DAGAND
+ */
 public class Hook {
 
+    /**
+     * Le WebDriverManager, nous permettant de gérer le driver
+     */
     private final WebDriverManager webDriverManager;
 
     /**
-     * Constructor of class, used
-     * @param webDriverManager WebDriverManager obtained with PicoContainer
+     * Le constructeur de la classe, utilisé pour initialiser le webDriverManager
+     * @param webDriverManager WebDriverManager obtenu via PicoContainer
      */
     public Hook(WebDriverManager webDriverManager) {
         this.webDriverManager = webDriverManager;
     }
 
     /**
-     * The method setting up the driver for the tests, executed before each test.
+     * Méthode utilisée pour setup le WebDriver, appelée avant chaque test
      */
     @Before
     public void setUp() throws MalformedURLException {
@@ -30,7 +36,7 @@ public class Hook {
     }
 
     /**
-     * The method tearing down the driver, executed after each test.
+     * La méthode utilisée pour détruire le WebDriver, appelée après chaque test.
      */
     @After
     public void tearDown(Scenario scenario) {
@@ -40,9 +46,4 @@ public class Hook {
         }
         this.webDriverManager.quit();
     }
-
-
-
-
-
 }
