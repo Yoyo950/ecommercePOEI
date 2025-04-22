@@ -8,6 +8,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.io.ObjectInputFilter;
@@ -49,37 +50,38 @@ public class WebDriverManager {
         String urlGrid = ConfigReader.getProperty("urlGrid");
         boolean isGrid = !Objects.equals(urlGrid, "");
         WebDriver tempDriver;
+        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         //Depending on 'browser' property, change browser used in WebDriver
         switch (ConfigReader.getProperty("browser") == null ? "chrome" : ConfigReader.getProperty("browser")) {
             case "edge":
                 EdgeOptions edgeOptions = new EdgeOptions();
-                edgeOptions.setCapability("browserName", "MicrosoftEdge");
+                desiredCapabilities.setBrowserName("MicrosoftEdge");
                 if(isHeadless){
                     //To execute in headless
                     edgeOptions.addArguments("--headless");
                 }
                 //Execute in remote or locally, depending on urlGrid
-                tempDriver = isGrid ? new RemoteWebDriver(new URL(urlGrid), edgeOptions) : new EdgeDriver(edgeOptions);
+                tempDriver = isGrid ? new RemoteWebDriver(new URL(urlGrid), desiredCapabilities) : new EdgeDriver(edgeOptions);
                 break;
             case "firefox":
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
-                firefoxOptions.setCapability("browserName", "firefox");
+                desiredCapabilities.setBrowserName("firefox");
                 if(isHeadless){
                     //To execute in headless
                     firefoxOptions.addArguments("--headless");
                 }
                 //Execute in remote or locally, depending on urlGrid
-                tempDriver = isGrid ? new RemoteWebDriver(new URL(urlGrid), firefoxOptions) : new FirefoxDriver(firefoxOptions);
+                tempDriver = isGrid ? new RemoteWebDriver(new URL(urlGrid), desiredCapabilities) : new FirefoxDriver(firefoxOptions);
                 break;
             default:
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.setCapability("browserName", "chrome");
+                desiredCapabilities.setBrowserName("chrome");
                 if(isHeadless){
                     //To execute in headless
                     chromeOptions.addArguments("--headless");
                 }
                 //Execute in remote or locally, depending on urlGrid
-                tempDriver = isGrid ? new RemoteWebDriver(new URL(urlGrid), chromeOptions) : new ChromeDriver(chromeOptions);
+                tempDriver = isGrid ? new RemoteWebDriver(new URL(urlGrid), desiredCapabilities) : new ChromeDriver(chromeOptions);
                 break;
         }
         //Return the completed driver
