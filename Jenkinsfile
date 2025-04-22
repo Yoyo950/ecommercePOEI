@@ -3,6 +3,7 @@ pipeline {
             string(name: 'TEST_KEYS', defaultValue: '', description: 'The keys of the tests imported and executed')
             choice(name: 'BROWSER', choices: ['chrome', 'edge', 'firefox'], description: 'The browser used for the tests')
             booleanParam(name: 'IS_HEADLESS', defaultValue: false, description: 'Define if we run in headless')
+            string(name: 'URL_GRID', defaultValue: '', description: 'Necessary URL for running the test on a distant machine. If empty, the driver is used locally.')
     }
 
     environment {
@@ -12,6 +13,7 @@ pipeline {
         BRWSR = '%BROWSER%'
         HL = '%IS_HEADLESS%'
         TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5hbnQiOiJiNmNhZGQwNS1lMzQxLTNmMTctYjU1Zi00OTM0MTI4MWQ4MmEiLCJhY2NvdW50SWQiOiI3MTIwMjA6MDMxYzNhY2QtNzIwZi00MDViLThmMzQtODRlZDBjZmQwNGU4IiwiaXNYZWEiOmZhbHNlLCJpYXQiOjE3NDUzMDc2OTgsImV4cCI6MTc0NTM5NDA5OCwiYXVkIjoiNjIwNUZCQTA0QUI0NDE3RDhCOTYwRTk5RTU1RkNDMzUiLCJpc3MiOiJjb20ueHBhbmRpdC5wbHVnaW5zLnhyYXkiLCJzdWIiOiI2MjA1RkJBMDRBQjQ0MTdEOEI5NjBFOTlFNTVGQ0MzNSJ9.Yszb2prL4yG9daSGvRDeMEgN7KrY6zd4E1YEHMRJsSs"
+        GRID_URL = URL_GRID
     }
     agent any
 

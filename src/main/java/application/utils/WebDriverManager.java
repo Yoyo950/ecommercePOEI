@@ -3,12 +3,17 @@ package application.utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.chromium.ChromiumOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
+import java.util.Objects;
 
 /**
  * Class used to manage the WebDriver
@@ -26,7 +31,7 @@ public class WebDriverManager {
     /**
      * Used Before the test, this method instantiate the WebDriver using the private 'getDriverConfig' method
      */
-    public void createDriver() {
+    public void createDriver() throws MalformedURLException {
         driver = this.getDriverConfig();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -37,9 +42,11 @@ public class WebDriverManager {
      * Method used to instantiate the WebDriver,
      * @return WebDriver according to the config
      */
-    private WebDriver getDriverConfig() {
+    private WebDriver getDriverConfig() throws MalformedURLException {
         //Determines if the execution of tests is in headless or not
         boolean isHeadless = Boolean.parseBoolean(System.getenv("HL"));
+        String urlGrid = System.getenv("GRID_URL");
+        boolean isGrid = !Objects.equals(urlGrid, "");
         WebDriver tempDriver;
         //Depending on 'browser' property, change browser used in WebDriver
         switch (System.getenv("BRWSR") == null ? "chrome" : System.getenv("BRWSR") ) {
@@ -49,7 +56,8 @@ public class WebDriverManager {
                     //To execute in headless
                     edgeOptions.addArguments("--headless");
                 }
-                tempDriver = new EdgeDriver(edgeOptions);
+                //Execute in remote or locally, depending on urlGrid
+                tempDriver = isGrid ? new RemoteWebDriver(new URL(urlGrid), edgeOptions) : new EdgeDriver(edgeOptions);
                 break;
             case "firefox":
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
@@ -57,7 +65,8 @@ public class WebDriverManager {
                     //To execute in headless
                     firefoxOptions.addArguments("--headless");
                 }
-                tempDriver = new FirefoxDriver(firefoxOptions);
+                //Execute in remote or locally, depending on urlGrid
+                tempDriver = isGrid ? new RemoteWebDriver(new URL(urlGrid), firefoxOptions) : new FirefoxDriver(firefoxOptions);
                 break;
             default:
                 ChromeOptions chromeOptions = new ChromeOptions();
@@ -65,9 +74,11 @@ public class WebDriverManager {
                     //To execute in headless
                     chromeOptions.addArguments("--headless");
                 }
-                tempDriver = new ChromeDriver(chromeOptions);
+                //Execute in remote or locally, depending on urlGrid
+                tempDriver = isGrid ? new RemoteWebDriver(new URL(urlGrid), chromeOptions) : new ChromeDriver(chromeOptions);
                 break;
         }
+        //Return the completed driver
         return tempDriver;
     }
 
