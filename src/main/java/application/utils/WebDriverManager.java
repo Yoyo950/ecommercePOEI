@@ -53,6 +53,7 @@ public class WebDriverManager {
         switch (ConfigReader.getProperty("browser") == null ? "chrome" : ConfigReader.getProperty("browser")) {
             case "edge":
                 EdgeOptions edgeOptions = new EdgeOptions();
+                edgeOptions.setCapability("browserName", "MicrosoftEdge");
                 if(isHeadless){
                     //To execute in headless
                     edgeOptions.addArguments("--headless");
@@ -62,6 +63,7 @@ public class WebDriverManager {
                 break;
             case "firefox":
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
+                firefoxOptions.setCapability("browserName", "firefox");
                 if(isHeadless){
                     //To execute in headless
                     firefoxOptions.addArguments("--headless");
@@ -71,6 +73,7 @@ public class WebDriverManager {
                 break;
             default:
                 ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.setCapability("browserName", "chrome");
                 if(isHeadless){
                     //To execute in headless
                     chromeOptions.addArguments("--headless");
