@@ -10,6 +10,7 @@ pipeline {
         PATH_CUCUMBER_FILE = 'target/cucumber.json'
         PATH_ZIP = "features.zip"
         PATH_EXPORT = "src/test/resources/features/distant"
+        HL = '%IS_HEADLESS%'
         TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5hbnQiOiJiNmNhZGQwNS1lMzQxLTNmMTctYjU1Zi00OTM0MTI4MWQ4MmEiLCJhY2NvdW50SWQiOiI3MTIwMjA6MDMxYzNhY2QtNzIwZi00MDViLThmMzQtODRlZDBjZmQwNGU4IiwiaXNYZWEiOmZhbHNlLCJpYXQiOjE3NDUzMDc2OTgsImV4cCI6MTc0NTM5NDA5OCwiYXVkIjoiNjIwNUZCQTA0QUI0NDE3RDhCOTYwRTk5RTU1RkNDMzUiLCJpc3MiOiJjb20ueHBhbmRpdC5wbHVnaW5zLnhyYXkiLCJzdWIiOiI2MjA1RkJBMDRBQjQ0MTdEOEI5NjBFOTlFNTVGQ0MzNSJ9.Yszb2prL4yG9daSGvRDeMEgN7KrY6zd4E1YEHMRJsSs"
     }
     agent any
@@ -18,9 +19,9 @@ pipeline {
         stage('Init') {
             steps {
                 script {
+                    bat 'del "src\\main\\resources\\config.properties"'
+                    writeFile (file: 'src/main/resources/config.properties', text: "browser = ${params.BROWSER}\nurl=http://www.automationpractice.pl/\nheadless = ${params.IS_HEADLESS}\nurlGrid = ${params.URL_GRID}\nemail=finalTestPOEI1@gmail.com\npassword=loislane\nname=Lois\nsurname=Lane\ntimeout=5")
                     bat """
-                        del "src\\main\\resources\\config.properties"
-                        echo "browser = %BROWSER%\nheadless = %IS_HEADLESS%\nurlGrid = %URL_GRID%\nurl=http://www.automationpractice.pl/\nemail=finalTestPOEI1@gmail.com\npassword=loislane\nname=Lois\nsurname=Lane\ntimeout=5" > src/main/resources/config.properties
                         curl -H "Content-Type: application/json" -X GET -H "Authorization: Bearer %TOKEN%" -o %PATH_ZIP% "https://xray.cloud.getxray.app/api/v2/export/cucumber?keys=%TEST_KEYS%"
                         mkdir %PATH_EXPORT%
                         unzip -o %PATH_ZIP% -d %PATH_EXPORT%
