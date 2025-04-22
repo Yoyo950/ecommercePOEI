@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Classe de base, héritée par toutes les autres pages.
  * Permet d'initialiser le driver et les @FindBy via l'initialisation des éléments avec PageFactory
+ * @author Yoann DAGAND
  */
 public abstract class BasePage {
 
