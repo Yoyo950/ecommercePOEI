@@ -20,7 +20,7 @@ pipeline {
                 script {
                     bat """
                         del "src\\main\\resources\\config.properties"
-                        echo "browser = ${params.BROWSER}\nheadless = ${params.IS_HEADLESS}\nurlGrid = ${params.URL_GRID}\nurl=http://www.automationpractice.pl/\nemail=finalTestPOEI1@gmail.com\npassword=loislane\nname=Lois\nsurname=Lane\ntimeout=5" > src/main/resources/config.properties
+                        echo "browser = %BROWSER%\nheadless = %IS_HEADLESS%\nurlGrid = %URL_GRID%\nurl=http://www.automationpractice.pl/\nemail=finalTestPOEI1@gmail.com\npassword=loislane\nname=Lois\nsurname=Lane\ntimeout=5" > src/main/resources/config.properties
                         curl -H "Content-Type: application/json" -X GET -H "Authorization: Bearer %TOKEN%" -o %PATH_ZIP% "https://xray.cloud.getxray.app/api/v2/export/cucumber?keys=%TEST_KEYS%"
                         mkdir %PATH_EXPORT%
                         unzip -o %PATH_ZIP% -d %PATH_EXPORT%
