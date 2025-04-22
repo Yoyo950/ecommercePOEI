@@ -10,6 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.io.ObjectInputFilter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
@@ -44,12 +45,12 @@ public class WebDriverManager {
      */
     private WebDriver getDriverConfig() throws MalformedURLException {
         //Determines if the execution of tests is in headless or not
-        boolean isHeadless = Boolean.parseBoolean(System.getenv("HL"));
-        String urlGrid = System.getenv("GRID_URL");
+        boolean isHeadless = Boolean.parseBoolean(ConfigReader.getProperty("headless"));
+        String urlGrid = ConfigReader.getProperty("urlGrid");
         boolean isGrid = !Objects.equals(urlGrid, "");
         WebDriver tempDriver;
         //Depending on 'browser' property, change browser used in WebDriver
-        switch (System.getenv("BRWSR") == null ? "chrome" : System.getenv("BRWSR") ) {
+        switch (ConfigReader.getProperty("browser") == null ? "chrome" : ConfigReader.getProperty("browser")) {
             case "edge":
                 EdgeOptions edgeOptions = new EdgeOptions();
                 if(isHeadless){
