@@ -109,7 +109,7 @@ public class AuthentificationStepDefinitionPage {
      */
     @When("Il entre une adresse mail temporaire sur le champ de création")
     public void ilEntreUneAdresseMailTemporaireSurLeChampDeCreation() throws InterruptedException {
-        authentificationPage.enterEmailForAccountCreation(ConfigReader.getProperty("mail_temporaire"));
+        authentificationPage.enterEmailForAccountCreation(System.getProperty("email_temp"));
     }
 
     @When("Il entre son identifiant {string} et son mot de passe {string}")

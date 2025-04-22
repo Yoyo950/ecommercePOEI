@@ -50,7 +50,8 @@ public class MailJetablePage extends BasePage {
     }
 
     public void enterMailInLogin() {
-        login.sendKeys(ConfigReader.getProperty("mail_temporaire") + Keys.ENTER);
+        System.setProperty("email_temp", "temppoeimailjetable" + System.currentTimeMillis() + "@yopmail.com");
+        login.sendKeys(System.getProperty("email_temp") + Keys.ENTER);
     }
 
     public void clickOnLinkAndGoBack() throws InterruptedException {

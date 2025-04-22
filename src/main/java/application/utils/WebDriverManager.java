@@ -42,7 +42,7 @@ public class WebDriverManager {
         boolean isHeadless = Boolean.parseBoolean(System.getenv("HL"));
         WebDriver tempDriver;
         //Depending on 'browser' property, change browser used in WebDriver
-        switch (System.getenv("BRWSR")) {
+        switch (System.getenv("BRWSR") == null ? "chrome" : System.getenv("BRWSR") ) {
             case "edge":
                 EdgeOptions edgeOptions = new EdgeOptions();
                 if(isHeadless){

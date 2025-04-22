@@ -25,7 +25,7 @@ public class ForgotPasswordPage extends BaseSitePage {
     }
 
     public void enterEmail() {
-        input.sendKeys(ConfigReader.getProperty("mail_temporaire"));
+        input.sendKeys(System.getProperty("email_temp"));
     }
 
     public void submitEmail() {
